@@ -1,0 +1,16 @@
+form{
+    margin: 2vw 0;
+}
+
+input[type=text]{
+    width: 30vh;
+    /* height: 3vh; */
+    border-radius: 5px;
+    border-color: gray;
+    padding: 0.5vh;
+}
+
+button{
+    padding: 0.5vh;
+    border-radius: 5px;
+}

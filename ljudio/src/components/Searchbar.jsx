@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 
+import './Searchbar.css'
+
 function Searchbar() {
   const [searchString, setSearchString] = useState('')
 
@@ -23,6 +25,10 @@ function Searchbar() {
         console.log('aync', result);
       }
     }
+
+    // const customStyle = {
+    //   margin: "2vw 0"
+    // }
 
   return (
     <form>

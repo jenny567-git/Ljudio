@@ -6,10 +6,16 @@ html{
 
 body {
   height: 100%;
-  display: flex;
-  flex-direction: column;
+  /* display: flex;
+  flex-direction: column; */
   font-family: 'Urbanist', sans-serif;
   margin: auto;
+}
+
+#root{
+  height: 100%;
+  display: flex;
+  flex-direction: column;
 }
 
 main {
@@ -23,3 +29,10 @@ main {
   width: 90%;
   margin: auto;
 }
+
+/* 
+footer{
+  display: flex;
+  flex-direction: column;
+} */
+

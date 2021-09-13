@@ -1,35 +1,23 @@
 import React from "react";
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 
-import Artists from "../components/pages/Artists";
-import Songs from "../components/pages/Songs";
-import Home from "../components/pages/Home";
 
 import "./Navbar.css";
+import logo from '../images/logo2-edit.png'
+import Searchbar from "./Searchbar";
 
 function Navbar() {
   return (
-    <Router>
-      <div>
-        <nav>
+    <div>
+        <nav className="container">
+          <img src={logo} alt="" />
           <Link to="/">Home</Link>
           <Link to="/artists">All artists</Link>
           <Link to="/songs">All songs</Link>
+          <Searchbar/>
         </nav>
-        <Switch>
-          <Route exact path="/">
-            <Home />
-          </Route>
-          <Route path="/artists">
-            <Artists />
-          </Route>
-          <Route path="/songs">
-            <Songs />
-          </Route>
-        </Switch>
-      </div>
-    </Router>
-  );
+    </div>
+  )
 }
 
 export default Navbar;

@@ -1,14 +1,11 @@
 import React from "react";
 
+import Searchbar from "../Searchbar";
+
 function Home() {
   return (
-    <div className="searchContainer">
-      <form>
-        <input type="text" placeholder="Search for artists or tracks" />
-        <button type="submit">
-          <i class="fa fa-search"></i>
-        </button>
-      </form>
+    <div className="container">
+      <Searchbar />
     </div>
   );
 }

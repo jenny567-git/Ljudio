@@ -2,7 +2,7 @@ import React from 'react'
 
 function Artists() {
     return (
-        <div>
+        <div className="container">
             in artists
         </div>
     )

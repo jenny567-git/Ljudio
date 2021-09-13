@@ -5,15 +5,16 @@ html{
 }
 
 body {
-  font-family: 'Urbanist', sans-serif;
-  margin: auto;
   height: 100%;
   display: flex;
   flex-direction: column;
+  font-family: 'Urbanist', sans-serif;
+  margin: auto;
 }
 
 main {
   display: flex;
+  flex-direction: column;
   flex-grow: 1;
   margin: 2vh 0;
 }

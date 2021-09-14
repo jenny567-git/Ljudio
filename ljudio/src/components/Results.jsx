@@ -1,28 +1,14 @@
-import React, { useContext } from "react";
-import Result from "./Result";
-import { StoreContext } from "../utils/store";
+import React from 'react'
+import Result from './Result'
 
-function Results() {
-  const { results } = useContext(StoreContext);
-  const a = results[0]
-//   const myarr = [...a]
-
-//   console.log(myarr);
-  return (
-    <div>
-      <div>
-        {results.map((result) => (
-          <Result key={result.videoId} result={result} />
-        ))}
-      </div>
-      {/* <div>
-          {array.forEach(
-              result => (
-              <Result key={result.videoId} result={result}/>
-              ))}
-      </div> */}
-    </div>
-  );
+function Results({searchResults}) {
+    return (
+        <div>
+            {searchResults.map((result) => (
+                <Result key={result.title} result={result}/>
+            ))}
+        </div>
+    )
 }
 
-export default Results;
+export default Results

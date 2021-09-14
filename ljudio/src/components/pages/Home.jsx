@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React from "react";
 import { StoreContext } from "../../utils/store";
 
 import Searchbar from "../Searchbar";
@@ -6,33 +6,20 @@ import Player from "../Player";
 import FooterMusicPlayer from "../FooterMusicPlayer";
 import Results from "../Results";
 
-function Home() {
+function Home({searchResults, searchString}) {
   // let videoId = 'dQw4w9WgXcQ';
   // window.player.loadVideoById(videoId);
   // const {results} = React.useContext(StoreContext)
 
-  // const results = [
-  //   {
-  //     title: 's1',
-  //     artist: 'a1'
-  //   },
-  //   {
-  //     title: 's2',
-  //     artist: 'a2'
-  //   },
-  //   {
-  //     title: 's3',
-  //     artist: 'a3'
-  //   }
-  // ]
- 
+  
+
   return (
     <div className="container">
-      <Searchbar />
+      <Searchbar string={searchString}/>
       {/* <Player/>
       <p>Footer player</p>
       <FooterMusicPlayer/> */}
-      <Results />
+      <Results searchResults={searchResults}/>
     </div>
   );
 }

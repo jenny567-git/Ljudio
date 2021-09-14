@@ -6,7 +6,7 @@ import "./Navbar.css";
 import logo from '../images/logo2-edit.png'
 import Searchbar from "./Searchbar";
 
-function Navbar() {
+function Navbar({searchResults, searchString}) {
   return (
     <div>
         <nav className="container">
@@ -16,7 +16,7 @@ function Navbar() {
           <Link to="/">Home</Link>
           <Link to="/artists">All artists</Link>
           <Link to="/songs">All songs</Link>
-          <Searchbar/>
+          <Searchbar string={searchString}/>
         </nav>
     </div>
   )

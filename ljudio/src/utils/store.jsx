@@ -1,3 +1,5 @@
+// https://dev.to/nazmifeeroz/using-usecontext-and-usestate-hooks-as-a-store-mnm
+
 import React, { useState, useContext } from "react";
 
 export const StoreContext = React.createContext(null);

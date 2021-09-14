@@ -1,23 +1,23 @@
-import React, { useState, useContext } from "react";
-import { StoreContext } from "../utils/store";
+import React, { useState, useEffect } from "react";
 
 import './Searchbar.css'
 
-function Searchbar() {
+function Searchbar({string}) {
   const [searchString, setSearchString] = useState('')
-  // const [searchResult, setSearchResult] = useState([])
-  const {results: [results, setResults] } = useContext(StoreContext)
+  const [searchResult, setSearchResult] = useState([])
+  
+    // const search = (e) => {
+      //   e.preventDefault()
+      //   console.log(searchString);
+      //   fetch('https://yt-music-api.herokuapp.com/api/yt/search/' + searchString)
+      //     .then(res => res.json())
+      //     .then(
+        //       (result) => {
+          //         console.log(result);
+          //       })  
+          //     }
 
-  // const search = (e) => {
-  //   e.preventDefault()
-  //   console.log(searchString);
-  //   fetch('https://yt-music-api.herokuapp.com/api/yt/search/' + searchString)
-  //     .then(res => res.json())
-  //     .then(
-  //       (result) => {
-  //         console.log(result);
-  //       })  
-  //     }
+  // fetch (`https://yt-music-api.herokuapp.com/api/yt/search/${searchString}`)
   const search2 =  async (e) => {
     e.preventDefault()
     var response = await fetch(
@@ -26,9 +26,8 @@ function Searchbar() {
       var result = await response.json()
       if (result) {
         console.log('aync', result);
-        //save results to store context
-        setResults(result)
-        console.log('context', result);
+        setSearchResult(result)
+        console.log(searchResult);
       }
     }
 

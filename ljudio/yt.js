@@ -1,7 +1,10 @@
+// accessible variable for calling player functions
+let player;
+
 // gets called automatically when YouTube player loads
 function onYouTubeIframeAPIReady() {
     // using global variable
-    window.player = new YT.Player('yt-player', {
+      window.player = new YT.Player('yt-player', {
       height: '0',
       width: '0',
       events: {

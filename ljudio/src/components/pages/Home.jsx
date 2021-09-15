@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useState, useContext} from "react";
 import { StoreContext } from "../../utils/store";
 
 import Searchbar from "../Searchbar";
@@ -7,24 +7,7 @@ import Results from "../Results";
 import Player from "../Player";
 
 function Home() {
-  // let videoId = 'dQw4w9WgXcQ';
-  // window.player.loadVideoById(videoId);
-  // const {results} = React.useContext(StoreContext)
-
-  // const results = [
-  //   {
-  //     title: 's1',
-  //     artist: 'a1'
-  //   },
-  //   {
-  //     title: 's2',
-  //     artist: 'a2'
-  //   },
-  //   {
-  //     title: 's3',
-  //     artist: 'a3'
-  //   }
-  // ]
+  const { results } = useContext(StoreContext);
  
   return (
     <div className="container">

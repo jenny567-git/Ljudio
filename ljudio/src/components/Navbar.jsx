@@ -16,7 +16,7 @@ function Navbar() {
           <Link to="/">Home</Link>
           <Link to="/artists">All artists</Link>
           <Link to="/songs">All songs</Link>
-          <Searchbar/>
+          {/* <Searchbar/> */}
         </nav>
     </div>
   )

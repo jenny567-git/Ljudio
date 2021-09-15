@@ -2,9 +2,9 @@ import React, {useState, useContext} from "react";
 import Player from "./Player";
 import { StoreContext } from "../utils/store";
 
-import "./Result.css";
+import "./SongResult.css";
 
-function Result({ result }) {
+function SongResult({ result }) {
   const url = result.thumbnails[0].url;
   const {currentSong: [currentSong, setCurrentSong] } = useContext(StoreContext)
 
@@ -36,4 +36,4 @@ function Result({ result }) {
   );
 }
 
-export default Result;
+export default SongResult;

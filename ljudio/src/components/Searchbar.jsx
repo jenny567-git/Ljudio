@@ -8,9 +8,12 @@ function Searchbar() {
   // const [type, setType] = useState("songs");
   const {type: [type, setType],} = useContext(StoreContext);
   const {results: [results, setResults]} = useContext(StoreContext);
+  const {isLoading: [isLoading, setLoading]} = useContext(StoreContext);
 
   const search2 = async (e) => {
     e.preventDefault();
+    console.log('loading in start of api', isLoading);
+    setLoading(true)
     const radiovalue = document.querySelector(
       'input[type="radio"]:checked'
     ).value;
@@ -41,6 +44,8 @@ function Searchbar() {
       setResults(result);
       console.log('radiovalue ', radiovalue);
       console.log("context", result);
+      setLoading(false)
+      // console.log('loading in end of api', isLoading);
     }
   };
 

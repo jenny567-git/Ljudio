@@ -22,7 +22,7 @@ function SongResult({ result }) {
         <p>
           Artist:
           {/* //error */}
-          {/* <span style={{ fontWeight: "bold" }}>{result.artist.name}</span> */}
+          <span style={{ fontWeight: "bold" }}>{result.artist.name}</span>
         </p>
         <p>
           Title: <span style={{ fontWeight: "bold" }}>{result.name}</span>

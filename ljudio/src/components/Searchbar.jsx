@@ -1,4 +1,4 @@
-import React, { useState, useContext, useRef } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import { StoreContext } from "../utils/store";
 
 import "./Searchbar.css";
@@ -15,7 +15,8 @@ function Searchbar() {
       'input[type="radio"]:checked'
     ).value;
     console.log("radio", radiovalue);
-
+    
+    setType(radiovalue);
     switch (radiovalue) {
       case "artists":
         var response = await fetch(
@@ -24,7 +25,7 @@ function Searchbar() {
         break;
       case "albums":
         var response = await fetch(
-          "https://yt-music-api.herokuapp.com/api/yt/albums/" + searchString
+          "https://yt-music-api.herokuapp.com/api/yt/search/" + searchString
         );
         break;
       default:
@@ -37,7 +38,6 @@ function Searchbar() {
     if (result) {
       console.log("aync", result);
       //save results to store context
-      setType(radiovalue);
       setResults(result);
       console.log('radiovalue ', radiovalue);
       console.log("context", result);

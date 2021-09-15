@@ -20,7 +20,7 @@ function Results() {
     let comp;
     console.log("what is type", type[0]);
     console.log('what is result', results[0]);
-    if (a.content !== undefined && isLoading[0] != true) {
+    if (a.content !== undefined && !isLoading[0]) {
       switch (type[0]) {
         case "artists":
           comp = Array.from(a.content).map((result) => (

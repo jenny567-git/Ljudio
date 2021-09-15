@@ -32,9 +32,9 @@ function Results() {
           break;
       }
     }
-    return <div>{comp}</div>;
+    return <>{comp}</>;
   }
-  return <div>{renderResult()}</div>;
+  return <div className={type[0] == 'artists' ? 'artist-grid' : ''}>{renderResult()}</div>;
 }
 
 export default Results;

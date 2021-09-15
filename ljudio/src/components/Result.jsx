@@ -1,15 +1,18 @@
-import React from 'react'
-import Player from './Player'
+import React from "react";
+import Player from "./Player";
 
-function Result({result}) {
-    return (
-        <div>
-            {/* <p>hej</p> */}
-            {/* <p>{result.type}</p> */}
-            <Player id={result.videoId}/>
-            <p>{result.videoId}</p>
-        </div>
-    )
+import "./Result.css";
+
+function Result({ result }) {
+  return (
+    <div className="result-div">
+      <div className="song-info">
+        <p>{result.artist.name}</p>
+        <p>{result.name}</p>
+      </div>
+      <Player id={result.videoId} />
+    </div>
+  );
 }
 
-export default Result
+export default Result;

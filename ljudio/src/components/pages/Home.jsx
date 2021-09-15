@@ -2,7 +2,6 @@ import React, {useState} from "react";
 import { StoreContext } from "../../utils/store";
 
 import Searchbar from "../Searchbar";
-import Player from "../Player";
 import FooterMusicPlayer from "../FooterMusicPlayer";
 import Results from "../Results";
 
@@ -29,8 +28,7 @@ function Home() {
   return (
     <div className="container">
       <Searchbar />
-      {/* <Player/>
-      <p>Footer player</p>
+      {/* <p>Footer player</p>
       <FooterMusicPlayer/> */}
       <Results />
     </div>

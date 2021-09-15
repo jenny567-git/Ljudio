@@ -21,7 +21,7 @@ function Searchbar() {
   const search2 =  async (e) => {
     e.preventDefault()
     var response = await fetch(
-      'https://yt-music-api.herokuapp.com/api/yt/search/' + searchString
+      'https://yt-music-api.herokuapp.com/api/yt/songs/' + searchString
       ) // Default is GET
       var result = await response.json()
       if (result) {

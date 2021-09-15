@@ -1,6 +1,7 @@
 import React from "react";
 
-function Player() {
+function Player({id}) {
+  console.log('id in player', id);
   const play = (id) => {
     // calling global variable
     window.player.loadVideoById(id);
@@ -13,12 +14,12 @@ function Player() {
 
   return (
     <div>
-      <button onClick={(e) => play("DXxeOvvNNwc")}>
-        The Black Page #1 on piano
+      <button onClick={(e) => play(`${id}`)}>
+        Play
       </button>
-      <button onClick={(e) => play("CtkZxnkbjtI")}>
+      {/* <button onClick={(e) => play("CtkZxnkbjtI")}>
         The Black Page #2 live band
-      </button>
+      </button> */}
       <button onClick={pause}>Pause</button>
     </div>
   );

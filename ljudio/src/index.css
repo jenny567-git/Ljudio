@@ -43,7 +43,12 @@ footer{
 } */
 
 .artist-grid{
-  /* background: tomato; */
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  background: lightgray;
+  overflow:hidden;
+  padding: 1vw;
+  border-radius: 5px;
+  justify-items: center;
+  /* align-items: center; */
 }

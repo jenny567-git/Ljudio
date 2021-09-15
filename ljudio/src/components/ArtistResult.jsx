@@ -1,14 +1,16 @@
-import React from 'react'
+import React from "react";
 //key: brosweId
 
-function ArtistResult({result}) {
-    const imgUrl = result.thumbnails[1].url
-    return (
-        <div className="result-artists">
-            <img src={imgUrl} alt="" />
-            <p>{result.name}</p>
-        </div>
-    )
+function ArtistResult({ result }) {
+  const imgUrl = result.thumbnails[1].url;
+  return (
+    <div className="result-artists">
+      <a href={`/artists/` + result.browseId}>
+        <img src={imgUrl} alt="" />
+      </a>
+      <p>{result.name}</p>
+    </div>
+  );
 }
 
-export default ArtistResult
+export default ArtistResult;

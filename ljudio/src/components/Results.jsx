@@ -4,9 +4,13 @@ import Result from './Result'
 function Results({searchResults}) {
     return (
         <div>
-            {searchResults.map((result) => (
-                <Result key={result.title} result={result}/>
+            <p>Search results:</p>
+            {Object.keys(searchResults).map((result) => (
+                <Result key={result} result={result}/>
             ))}
+            {/* {Array.from(searchResults).forEach((result) => (
+                <Result key={result} result={result}/>
+            ))} */}
         </div>
     )
 }

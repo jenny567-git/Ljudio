@@ -3,8 +3,9 @@ import React from 'react'
 function Result({result}) {
     return (
         <div>
-            <p>{result.title}</p>
-            <p>{result.artist}</p>
+            <p>test</p>
+            <p>{result.type}</p>
+            {/* <p>{result.videoId}</p> */}
         </div>
     )
 }

@@ -16,7 +16,7 @@ function Home({searchResults, search2, onString}) {
   return (
     <div className="container">
       <Searchbar search2={search2} onString={onString}/>
-      <Player/>
+      {/* <Player/> */}
       {/* <p>Footer player</p>
       <FooterMusicPlayer/> */}
       <Results searchResults={searchResults}/>

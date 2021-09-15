@@ -1,3 +1,12 @@
 .result-div{
-    background: gray;
+    background: rgb(134, 207, 200);
+    display: flex;
+    justify-content: space-between;
+    padding: 1vw 2vw;
+    border-radius: 10px;
+    margin: 1vw 0
+}
+
+.result-div p{
+   margin: 0;
 }

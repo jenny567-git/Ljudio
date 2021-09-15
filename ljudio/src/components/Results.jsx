@@ -18,7 +18,6 @@ function Results() {
 
   return (
     <div>
-      <div>
         {a.content !== undefined ? (
           Array.from(a.content).map((result) => (
             <Result key={result.videoId} result={result} />
@@ -26,16 +25,6 @@ function Results() {
         ) : (
           <p>Make a search</p>
         )}
-        {/* {results.map((result) => (
-          <Result key={result.videoId} result={result} />
-        ))} */}
-      </div>
-      {/* <div>
-          {array.forEach(
-              result => (
-              <Result key={result.videoId} result={result}/>
-              ))}
-      </div> */}
     </div>
   );
 }

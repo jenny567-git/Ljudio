@@ -8,13 +8,15 @@ export function StoreProvider({ children }) {
   // const [sharing, setSharing] = React.useState([])
   // const [help, setHelp] = React.useState([])
   // const [pairing, setPairing] = React.useState(teamMembersNames)
-  const [results, setResults] = useState([]);
+  const [results, setResults] = useState([])
+  const [currentSong, setCurrentSong] = useState()
 
   const store = {
     // sharing: [sharing, setSharing],
     // help: [help, setHelp],
     // pairing: [pairing, setPairing],
-    results: [results, setResults]
+    results: [results, setResults],
+    currentSong: [currentSong, setCurrentSong]
   }
 
   return (

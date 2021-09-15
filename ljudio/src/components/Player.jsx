@@ -6,14 +6,20 @@ import "./Player.css";
 function Player({ id }) {
   const [isPlaying, setPlayPauseClicked] = useState(false);
   const { results } = useContext(StoreContext);
-  let a = { content: [] };
-  a = results[0];
+  const { currentSong } = useContext(StoreContext);
+  // let a = { content: [] };
+  // a = results[0];
   // console.log('array in player', Array.from(a));
-  console.log('array in player', Array.from(results[0].content));
-  const currentId = Array.from(results[0].content).findIndex( (element) => element.videoId == id)
-  console.log('current id', currentId);
-  console.log('next id', currentId+1);
-  console.log('prev id', currentId-1);
+  if(currentSong[0] != undefined){
+    console.log('currentsongId', currentSong[0]);
+    // console.log('array in player', Array.from(currentSong[0].content));
+    const arr = Array.from(results[0].content)
+    // console.log('arr', arr);
+    const currentId = arr.findIndex( x => x.videoId == currentSong[0])
+    console.log('current id', currentId);
+    // console.log('next id', currentId+1);
+    // console.log('prev id', currentId-1);
+  }
 
   useEffect(() => {
     isPlaying ? play(id) : pause();

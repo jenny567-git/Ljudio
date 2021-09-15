@@ -4,6 +4,7 @@ import { StoreContext } from "../../utils/store";
 import Searchbar from "../Searchbar";
 import FooterMusicPlayer from "../FooterMusicPlayer";
 import Results from "../Results";
+import Player from "../Player";
 
 function Home() {
   // let videoId = 'dQw4w9WgXcQ';
@@ -27,6 +28,7 @@ function Home() {
  
   return (
     <div className="container">
+      
       <Searchbar />
       {/* <p>Footer player</p>
       <FooterMusicPlayer/> */}

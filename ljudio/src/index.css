@@ -12,6 +12,12 @@ body {
   margin: auto;
 }
 
+#yt-player{
+  height: 0%;
+  display: flex;
+  flex-direction: column;
+}
+
 #root{
   height: 100%;
   display: flex;

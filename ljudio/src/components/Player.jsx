@@ -1,7 +1,15 @@
-import React from "react";
+import React, {useState, useEffect} from "react";
+
+import "./Player.css";
 
 function Player({id}) {
-  console.log('id in player', id);
+  const [isPlaying, setPlayPauseClicked] = useState(false);
+
+  useEffect(() => {
+    isPlaying ? play(id) : pause()
+  })
+
+  // console.log('id in player', id);
   const play = (id) => {
     // calling global variable
     window.player.loadVideoById(id);
@@ -14,13 +22,11 @@ function Player({id}) {
 
   return (
     <div>
-      <button onClick={(e) => play(`${id}`)}>
-        Play
+      <button className="btn" onClick={(e) => setPlayPauseClicked(!isPlaying)}
+        >
+        {isPlaying ? <i className="fas fa-pause"></i>: <i className="fas fa-play"></i>}
       </button>
-      {/* <button onClick={(e) => play("CtkZxnkbjtI")}>
-        The Black Page #2 live band
-      </button> */}
-      <button onClick={pause}>Pause</button>
+      {/* <button onClick={pause}>Pause</button> */}
     </div>
   );
 }

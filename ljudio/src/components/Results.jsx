@@ -6,9 +6,9 @@ function Results() {
   const { results } = useContext(StoreContext);
   let a = {content: []}
   a = results[0]
-  console.log('result in context', results);
-  console.log('a', a);
-  console.log('a list', a.content);
+//   console.log('result in context', results);
+//   console.log('a', a);
+//   console.log('a list', a.content);
 //    a.content.map(result => (
 //     console.log('result', result)))
 

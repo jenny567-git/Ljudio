@@ -8,7 +8,7 @@ function Result({ result }) {
 
   return (
     <div className="result-div">
-      <img src={url} alt="x" style={{
+      <img src={url} alt="" style={{
           borderRadius:"10px",
           width:"60px"
           }} />

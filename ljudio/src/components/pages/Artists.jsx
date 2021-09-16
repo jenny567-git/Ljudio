@@ -31,7 +31,7 @@ function Artists() {
     function renderResult(){
         let comp
         console.log('artist:', getArtistResult);
-        if(!isLoading[0]){
+        if(!isLoading){
             comp = (
                 <div>
                     {/* <img src={imgUrl} alt=""/> */}

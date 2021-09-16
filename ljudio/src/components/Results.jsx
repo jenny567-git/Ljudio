@@ -4,24 +4,24 @@ import ArtistResult from "./ArtistResult";
 import { StoreContext } from "../utils/store";
 
 function Results() {
-  const { type, results, isLoading } = useContext(StoreContext);
+  const { type: [type], results: [results], isLoading:[isLoading] } = useContext(StoreContext);
   let a = { content: [] };
-  a = results[0];
+  a = results;
   console.log("a list", a.content);
 
   useEffect(() => {
-    if(![isLoading[0]]){
+    if(![isLoading]){
       console.log('loading in effect', isLoading);
       renderResult()
     }
-  }, [results[0]])
+  }, [results])
 
   function renderResult() {
     let comp;
-    console.log("what is type", type[0]);
-    console.log('what is result', results[0]);
-    if (a.content !== undefined && !isLoading[0]) {
-      switch (type[0]) {
+    console.log("what is type", type);
+    console.log('what is result', results);
+    if (a.content !== undefined && !isLoading) {
+      switch (type) {
         case "artists":
           comp = Array.from(a.content).map((result) => (
             <ArtistResult key={result.browseId} result={result} />
@@ -37,7 +37,7 @@ function Results() {
     }
     return <>{comp}</>;
   }
-  return <div className={type[0] == 'artists' ? 'artist-grid' : ''}>{renderResult()}</div>;
+  return <div className={type == 'artists' ? 'artist-grid' : ''}>{renderResult()}</div>;
 }
 
 export default Results;

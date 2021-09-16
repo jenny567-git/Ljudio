@@ -5,17 +5,17 @@ import "./Player.css";
 
 function Player({ id }) {
   const [isPlaying, setPlayPauseClicked] = useState(false);
-  const { results } = useContext(StoreContext);
-  const { currentSong } = useContext(StoreContext);
+  const { results: [results] } = useContext(StoreContext);
+  const { currentSong:[currentSong] } = useContext(StoreContext);
   // let a = { content: [] };
-  // a = results[0];
+  // a = results;
   // console.log('array in player', Array.from(a));
-  if(currentSong[0] != undefined){
-    console.log('currentsongId', currentSong[0]);
-    // console.log('array in player', Array.from(currentSong[0].content));
-    const arr = Array.from(results[0].content)
+  if(currentSong != undefined){
+    console.log('currentsongId', currentSong);
+    // console.log('array in player', Array.from(currentSong.content));
+    const arr = Array.from(results.content)
     // console.log('arr', arr);
-    const currentId = arr.findIndex( x => x.videoId == currentSong[0])
+    const currentId = arr.findIndex( x => x.videoId == currentSong)
     console.log('current id', currentId);
     // console.log('next id', currentId+1);
     // console.log('prev id', currentId-1);

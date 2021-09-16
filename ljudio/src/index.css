@@ -55,6 +55,7 @@ footer{
 
 .result-artists img{
   cursor: pointer;
+  border-radius: 10px;
 }
 
 .artistImg{

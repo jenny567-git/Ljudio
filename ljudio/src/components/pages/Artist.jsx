@@ -8,7 +8,7 @@ function Artist() {
     artistResult: [getArtistResult, setArtistResult],
   } = useContext(StoreContext);
   // const { artistId:[getArtistId, setArtistId] } = useContext(StoreContext);
-  const imgUrl = getArtistResult.thumbnails[0].url;
+//   const imgUrl = getArtistResult.thumbnails[0].url;
   let { id } = useParams();
 
   useEffect(() => {
@@ -36,7 +36,7 @@ function Artist() {
     if (!isLoading) {
       comp = (
         <div>
-          <img src={imgUrl} alt="" className="artistImg"/>
+          {/* <img src={imgUrl} alt="" className="artistImg"/> */}
           <h3>{getArtistResult.name}</h3>
           <p>{getArtistResult.description}</p>
         </div>

@@ -24,11 +24,11 @@ function Song() {
 //   }
 
   useEffect(() => {
-    console.log("in song:", results.content);
+    // console.log("in song:", results.content);
     // console.log('array: ', Array.from(results));
     if (results.content == undefined) {
-      console.log("in if");
-      console.log('id in song', id);
+      // console.log("in if");
+      // console.log('id in song', id);
       setLoading(false);
       renderResult();
     }
@@ -42,9 +42,9 @@ function Song() {
 
   function renderResult() {
     let comp;
-    console.log("in render: song");
+    // console.log("in render: song");
     if (!isLoading) {
-      console.log("in render song loading");
+      // console.log("in render song loading");
       comp = (
         <div>
           Song player

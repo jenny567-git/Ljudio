@@ -5,7 +5,7 @@ import { StoreContext } from "./../../utils/store";
 function Artists() {
     const {isLoading: [isLoading, setLoading]} = useContext(StoreContext);
     const { artistResult: [getArtistResult, setArtistResult] } = useContext(StoreContext);
-    const { artistId:[getArtistId, setArtistId] } = useContext(StoreContext);
+    // const { artistId:[getArtistId, setArtistId] } = useContext(StoreContext);
     // const imgUrl = getArtistResult.thumbnails[1].url;
     let { id } = useParams()
 
@@ -14,11 +14,11 @@ function Artists() {
     }, []) //on mount
 
     const getArtist = async (e) => {
-        console.log("in artist id", getArtistId);
+        // console.log("in artist id", getArtistId);
         console.log('param id', id);
         setLoading(true)
         var response = await fetch(
-          "https://yt-music-api.herokuapp.com/api/yt/artist/" + getArtistId
+          "https://yt-music-api.herokuapp.com/api/yt/artist/" + id
         );
         var callResult = await response.json();
         if (callResult) {

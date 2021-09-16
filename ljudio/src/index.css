@@ -52,3 +52,7 @@ footer{
   justify-items: center;
   /* align-items: center; */
 }
+
+.result-artists img{
+  cursor: pointer;
+}

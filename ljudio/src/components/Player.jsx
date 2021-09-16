@@ -1,33 +1,47 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useState, useEffect, useContext, Component } from "react";
 import { StoreContext } from "../utils/store";
 
 import "./Player.css";
 
 function Player({ id }) {
   const [isPlaying, setPlayPauseClicked] = useState(false);
-  const { results: [results] } = useContext(StoreContext);
-  const { currentSong:[currentSong] } = useContext(StoreContext);
+  const {
+    results: [results],
+  } = useContext(StoreContext);
+  const {
+    currentSong: [currentSong],
+  } = useContext(StoreContext);
   // let a = { content: [] };
   // a = results;
   // console.log('array in player', Array.from(a));
-  if(currentSong != undefined){
-    console.log('currentsongId', currentSong);
+  if (currentSong != undefined) {
+    console.log("currentsongId", currentSong);
     // console.log('array in player', Array.from(currentSong.content));
-    const arr = Array.from(results.content)
+    const arr = Array.from(results.content);
     // console.log('arr', arr);
-    const currentId = arr.findIndex( x => x.videoId == currentSong)
-    console.log('current id', currentId);
+    const currentId = arr.findIndex((x) => x.videoId == currentSong);
+    console.log("current id", currentId);
     // console.log('next id', currentId+1);
     // console.log('prev id', currentId-1);
   }
 
+  const togglePlay = () => {
+    setPlayPauseClicked(!isPlaying);
+    isPlaying ? pause() : play();
+  };
+
+  //takes care of pause the music upon component unmounts
   useEffect(() => {
-    isPlaying ? play(id) : pause();
-  });
+    
+    return () => {
+      pause()
+    }
+  }, [])
 
   // console.log('id in player', id);
-  const play = (id) => {
+  const play = () => {
     // calling global variable
+    console.log("id", id);
     window.player.loadVideoById(id);
     window.player.playVideo();
   };
@@ -41,7 +55,7 @@ function Player({ id }) {
       <button className="btn">
         <i className="fas fa-step-backward"></i>
       </button>
-      <button className="btn" onClick={(e) => setPlayPauseClicked(!isPlaying)}>
+      <button className="btn" onClick={(e) => togglePlay()}>
         {isPlaying ? (
           <i className="fas fa-pause"></i>
         ) : (

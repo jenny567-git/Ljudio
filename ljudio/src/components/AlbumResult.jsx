@@ -31,6 +31,7 @@ function AlbumResult({result}) {
             <img src={imgUrl} alt="" />
             <p>{result.name}</p>
         </div>
+    )
 }
 
 export default AlbumResult

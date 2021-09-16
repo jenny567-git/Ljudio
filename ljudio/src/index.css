@@ -61,3 +61,14 @@ footer{
 .artistImg{
   width: auto
 }
+
+
+@media screen and (max-width:650px){
+  .artist-grid{
+    display: block;
+  }
+  
+  .result-artists img{
+    width: 100%;
+  }
+}

@@ -13,16 +13,26 @@ function Song() {
   let { id } = useParams();
 
   //problem with direct link, empty page
-//   useEffect(() => {
-//     console.log("in song:", results);
-//     // console.log('array: ', Array.from(results));
-//     if (Array.from(results).length == 0) {
-//       console.log("in if");
-      
-//     //   setLoading(false);
-//       renderResult();
+
+//   const getSong = async()=> {
+//     console.log("song id", id);
+//     setLoading(true)
+//     await id
+//     if(id){
+//         setLoading(false)
 //     }
-//   }, []); //on mount
+//   }
+
+  useEffect(() => {
+    console.log("in song:", results.content);
+    // console.log('array: ', Array.from(results));
+    if (results.content == undefined) {
+      console.log("in if");
+      console.log('id in song', id);
+      setLoading(false);
+      renderResult();
+    }
+  }, []); //on mount
 
   // const getSong = async() =>{
   //     setLoading(true)

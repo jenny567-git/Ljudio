@@ -8,6 +8,7 @@ export function StoreProvider({ children }) {
   const [type, setType] = useState()
   const [isLoading, setLoading] = useState(true)
   const [getArtistResult, setArtistResult] = useState([])
+  const [songResult, setSongResult] = useState([])
   const [getArtistId, setArtistId] = useState([])
 
 
@@ -17,6 +18,7 @@ export function StoreProvider({ children }) {
     type: [type, setType],
     isLoading: [isLoading, setLoading],
     artistResult: [getArtistResult, setArtistResult],
+    songResult: [songResult, setSongResult],
     artistId: [getArtistId, setArtistId]
   }
 

@@ -12,9 +12,9 @@ function SongResult({ result }) {
   } = useContext(StoreContext);
   let history = useHistory();
 
-  const songId = (id) => {
-    setCurrentSongId(id);
-  };
+  // const songId = (id) => {
+  //   setCurrentSongId(id);
+  // };
 
   const toSongLink = () => {
     history.push("/song/" + result.videoId);

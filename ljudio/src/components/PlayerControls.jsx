@@ -10,16 +10,6 @@ function PlayerControls({ id }) {
     currentSongId: [currentSongId, setCurrentSongId],
   } = useContext(StoreContext);
 
-  // if (currentSongId != undefined) {
-  //   console.log("currentsongId", currentSongId);
-  //   const arr = Array.from(results.content);
-  //   // console.log('arr', arr);
-  //   const currentId = arr.findIndex((x) => x.videoId == currentSongId);
-  //   console.log("current id", currentId);
-  //   // console.log('next id', currentId+1);
-  //   // console.log('prev id', currentId-1);
-  // }
-
   const togglePlay = () => {
     setPlaying(!isPlaying);
     isPlaying ? pause() : play();
@@ -45,9 +35,32 @@ function PlayerControls({ id }) {
     window.player.pauseVideo();
   };
 
+  const next = () => {
+    if(results.content){
+      let resArray = Array.from(results.content)
+      console.log('resArray:', resArray);
+      let currentSongIndex = resArray.findIndex(x => x.videoId == currentSongId)
+      console.log('currentsongindex:', currentSongIndex);
+      let nextSong = resArray[currentSongIndex+1];
+      console.log('next song:', nextSong);
+      window.player.loadVideoById(nextSong.videoId);
+    }
+  }
+
+  const previous = () => {
+    if(results.content){
+      let resArray = Array.from(results.content)
+      console.log('resArray:', resArray);
+      let currentSongIndex = resArray.findIndex(x => x.videoId == currentSongId)
+      console.log('currentsongindex:', currentSongIndex);
+      let prevSong = resArray[currentSongIndex-1];
+      console.log('prev song:', prevSong);
+      window.player.loadVideoById(prevSong.videoId);
+    }
+  }
   return (
     <div>
-      <button className="btn">
+      <button className="btn" onClick={() => previous()}>
         <i className="fas fa-step-backward"></i>
       </button>
       <button className="btn" onClick={(e) => togglePlay()}>
@@ -57,8 +70,7 @@ function PlayerControls({ id }) {
           <i className="fas fa-play"></i>
         )}
       </button>
-      {/* <button onClick={pause}>Pause</button> */}
-      <button className="btn">
+      <button className="btn" onClick={() => next()}>
         <i className="fas fa-step-forward"></i>
       </button>
     </div>

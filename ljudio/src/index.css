@@ -44,11 +44,13 @@ footer{
 .sticky-player{
   position: sticky;
   bottom: 0;
-  background: white;
+  background: lightgray;
   border: 1px outset lightgray;
   border-radius: 5px;
   display: flex;
   justify-content: space-between;  
+  align-items: center;
+  padding: 0 2vw;
 }
 
 .artist-grid{

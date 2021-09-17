@@ -1,0 +1,20 @@
+.result-div{
+    background: rgb(134, 207, 200);
+    display: flex;
+    padding: 1vw 2vw;
+    border-radius: 10px;
+    margin: 1vw 0
+}
+
+.result-div p{
+   margin: 0;
+}
+
+.song-info{
+    margin: 0 1vw;
+    flex-grow: 1;
+}
+
+@media screen and (max-width:650px){
+    
+}

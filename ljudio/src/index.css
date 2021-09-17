@@ -12,6 +12,12 @@ body {
   margin: auto;
 }
 
+#yt-player{
+  height: 0%;
+  display: flex;
+  flex-direction: column;
+}
+
 #root{
   height: 100%;
   display: flex;
@@ -35,4 +41,43 @@ footer{
   display: flex;
   flex-direction: column;
 } */
+.sticky-player{
+  position: sticky;
+  bottom: 0;
+  background: white;
+  border: 1px outset lightgray;
+  border-radius: 5px;
+  display: flex;
+  justify-content: space-between;  
+}
 
+.artist-grid{
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  background: lightgray;
+  overflow:hidden;
+  padding: 1vw;
+  border-radius: 5px;
+  justify-items: center;
+  /* align-items: center; */
+}
+
+.result-artists img{
+  cursor: pointer;
+  border-radius: 10px;
+}
+
+.artistImg{
+  width: auto
+}
+
+
+@media screen and (max-width:650px){
+  .artist-grid{
+    display: block;
+  }
+  
+  .result-artists img{
+    width: 100%;
+  }
+}

@@ -4,8 +4,8 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Navbar from "./components/navbar";
 import Footer from "./components/Footer";
 
-import Artists from "./components/pages/Artists";
-import Songs from "./components/pages/Songs";
+import Artist from "./components/pages/Artist";
+import Song from "./components/pages/Song";
 import Home from "./components/pages/Home";
 
 function App() {
@@ -94,11 +94,11 @@ function App() {
           <Route exact path="/">
             <Home searchResults={searchResults} search2={search2} onString={getString}/>
           </Route>
-          <Route path="/artists">
-            <Artists />
+          <Route path="/artist/:id">
+            <Artist />
           </Route>
-          <Route path="/songs">
-            <Songs />
+          <Route path="/song/:id">
+            <Song />
           </Route>
         </Switch>
       </main>

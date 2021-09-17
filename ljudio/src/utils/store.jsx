@@ -5,18 +5,23 @@ import React, { useState, useContext } from "react";
 export const StoreContext = React.createContext(null);
 
 export function StoreProvider({ children }) {
-  // const teamMembersNames = ['John', 'Mary', 'Jason', 'David']
+  const [results, setResults] = useState([])
+  const [currentSongId, setCurrentSongId] = useState()
+  const [type, setType] = useState()
+  const [isLoading, setLoading] = useState(true)
+  const [getArtistResult, setArtistResult] = useState([])
+  const [songResult, setSongResult] = useState([])
+  const [getArtistId, setArtistId] = useState([])
 
-  // const [sharing, setSharing] = React.useState([])
-  // const [help, setHelp] = React.useState([])
-  // const [pairing, setPairing] = React.useState(teamMembersNames)
-  const [results, setResults] = useState([]);
 
   const store = {
-    // sharing: [sharing, setSharing],
-    // help: [help, setHelp],
-    // pairing: [pairing, setPairing],
-    results: [results, setResults]
+    results: [results, setResults],
+    currentSongId: [currentSongId, setCurrentSongId],
+    type: [type, setType],
+    isLoading: [isLoading, setLoading],
+    artistResult: [getArtistResult, setArtistResult],
+    songResult: [songResult, setSongResult],
+    artistId: [getArtistId, setArtistId]
   }
 
   return (

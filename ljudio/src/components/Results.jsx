@@ -1,26 +1,31 @@
 import React, { useContext, useEffect } from "react";
 import SongResult from "./SongResult";
 import ArtistResult from "./ArtistResult";
-import Player from "./Player";
+import PlayerControls from "./PlayerControls";
 import { StoreContext } from "../utils/store";
 
 function Results() {
-  const { type: [type], results: [results], isLoading:[isLoading] } = useContext(StoreContext);
+  const {
+    type: [type],
+    results: [results],
+    isLoading: [isLoading],
+    currentSongId: [currentSongId, setCurrentSongId],
+  } = useContext(StoreContext);
   let a = { content: [] };
   a = results;
   console.log("a list", a.content);
 
   useEffect(() => {
-    if(![isLoading]){
-      console.log('loading in effect', isLoading);
-      renderResult()
+    if (![isLoading]) {
+      console.log("loading in effect", isLoading);
+      renderResult();
     }
-  }, [results])
+  }, [results]);
 
   function renderResult() {
     let comp;
     console.log("what is type", type);
-    console.log('what is result', results);
+    console.log("what is result", results);
     if (a.content !== undefined && !isLoading) {
       switch (type) {
         case "artists":
@@ -36,9 +41,24 @@ function Results() {
           break;
       }
     }
-    return <>{comp}<Player/></>;
+    return (
+      <>
+        {comp}
+        <div className="sticky-player">
+          <div>
+            <p>Songname</p>
+            <p>Artist</p>
+          </div>
+          <PlayerControls id={currentSongId} />
+        </div>
+      </>
+    );
   }
-  return <div className={type == 'artists' ? 'artist-grid' : ''}>{renderResult()}</div>;
+  return (
+    <div className={type == "artists" ? "artist-grid" : ""}>
+      {renderResult()}
+    </div>
+  );
 }
 
 export default Results;

@@ -1,5 +1,5 @@
 import React, {useState, useContext} from "react";
-import Player from "./Player";
+import PlayerControls from "./PlayerControls";
 import { StoreContext } from "../utils/store";
 import { useHistory } from "react-router-dom"
 
@@ -7,11 +7,11 @@ import "./SongResult.css";
 
 function SongResult({ result }) {
   const url = result.thumbnails[0].url;
-  const {currentSong: [currentSong, setCurrentSong] } = useContext(StoreContext)
+  const {currentSongId: [currentSongId, setCurrentSongId] } = useContext(StoreContext)
   let history = useHistory()
 
   const songId = (id) =>{
-    setCurrentSong(id)
+    setCurrentSongId(id)
   }
   
   const toSongLink = () => {
@@ -37,7 +37,7 @@ function SongResult({ result }) {
           <i className="fas fa-play"></i>
           {/* <i className="fas fa-pause"></i> */}
         </button>
-      <Player id={result.videoId} />
+      <PlayerControls id={result.videoId} />
       <button className="btn">
         <i className="fas fa-share" onClick={toSongLink}></i>
       </button>

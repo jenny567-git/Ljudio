@@ -1,7 +1,7 @@
 import React, { useContext, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { StoreContext } from "../../utils/store";
-import Player from "../Player";
+import PlayerControls from "../PlayerControls";
 
 function Song() {
   const {
@@ -48,7 +48,7 @@ function Song() {
       comp = (
         <div>
           Song player
-          <Player id={id} />
+          <PlayerControls id={id} />
         </div>
       );
     }

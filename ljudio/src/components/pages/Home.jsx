@@ -4,7 +4,7 @@ import { StoreContext } from "../../utils/store";
 import Searchbar from "../Searchbar";
 import FooterMusicPlayer from "../FooterMusicPlayer";
 import Results from "../Results";
-import Player from "../Player";
+import PlayerControls from "../PlayerControls";
 
 function Home() {
   const { results } = useContext(StoreContext);

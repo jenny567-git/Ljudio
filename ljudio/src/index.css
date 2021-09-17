@@ -41,6 +41,15 @@ footer{
   display: flex;
   flex-direction: column;
 } */
+.sticky-player{
+  position: sticky;
+  bottom: 0;
+  background: white;
+  border: 1px outset lightgray;
+  border-radius: 5px;
+  display: flex;
+  justify-content: space-between;  
+}
 
 .artist-grid{
   display: grid;

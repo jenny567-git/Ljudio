@@ -1,6 +1,7 @@
 import React, { useContext, useEffect } from "react";
 import SongResult from "./SongResult";
 import ArtistResult from "./ArtistResult";
+import Player from "./Player";
 import { StoreContext } from "../utils/store";
 
 function Results() {
@@ -35,7 +36,7 @@ function Results() {
           break;
       }
     }
-    return <>{comp}</>;
+    return <>{comp}<Player/></>;
   }
   return <div className={type == 'artists' ? 'artist-grid' : ''}>{renderResult()}</div>;
 }

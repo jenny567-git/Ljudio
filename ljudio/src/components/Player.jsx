@@ -4,19 +4,16 @@ import { StoreContext } from "../utils/store";
 import "./Player.css";
 
 function Player({ id }) {
-  const [isPlaying, setPlayPauseClicked] = useState(false);
+  const [isPlaying, setPlaying] = useState(false);
   const {
     results: [results],
   } = useContext(StoreContext);
   const {
     currentSong: [currentSong],
   } = useContext(StoreContext);
-  // let a = { content: [] };
-  // a = results;
-  // console.log('array in player', Array.from(a));
+
   if (currentSong != undefined) {
     console.log("currentsongId", currentSong);
-    // console.log('array in player', Array.from(currentSong.content));
     const arr = Array.from(results.content);
     // console.log('arr', arr);
     const currentId = arr.findIndex((x) => x.videoId == currentSong);
@@ -26,7 +23,7 @@ function Player({ id }) {
   }
 
   const togglePlay = () => {
-    setPlayPauseClicked(!isPlaying);
+    setPlaying(!isPlaying);
     isPlaying ? pause() : play();
   };
 
@@ -38,7 +35,6 @@ function Player({ id }) {
     }
   }, [])
 
-  // console.log('id in player', id);
   const play = () => {
     // calling global variable
     console.log("id", id);

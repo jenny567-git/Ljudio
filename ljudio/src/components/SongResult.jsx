@@ -38,7 +38,7 @@ function SongResult({ result }) {
           {/* <i className="fas fa-pause"></i> */}
         </button>
       <Player id={result.videoId} />
-      <button>
+      <button className="btn">
         <i className="fas fa-share" onClick={toSongLink}></i>
       </button>
     </div>

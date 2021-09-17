@@ -23,10 +23,10 @@ function Artist() {
     var response = await fetch(
       "https://yt-music-api.herokuapp.com/api/yt/artist/" + id
     );
-    var callResult = await response.json();
-    if (callResult) {
-      console.log("artist result", callResult);
-      setArtistResult(callResult);
+    var result = await response.json();
+    if (result) {
+      console.log("artist result", result);
+      setArtistResult(result);
       setLoading(false);
     }
   };

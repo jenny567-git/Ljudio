@@ -11,13 +11,27 @@ function Results() {
     isLoading: [isLoading],
     currentSongId: [currentSongId, setCurrentSongId],
   } = useContext(StoreContext);
-
+  
   // useEffect(() => {
   //   if (!isLoading) {
   //     console.log("loading in effect", isLoading);
   //     renderResult();
   //   }
   // }, [results]);
+  
+  const getSongName = () => {
+    let resArray = Array.from(results.content)
+    let song = resArray.find(x => x.videoId == currentSongId)
+    console.log('song info', song);
+    return song.name
+  }
+
+  const getSongArtist = () => {
+    let resArray = Array.from(results.content)
+    let song = resArray.find(x => x.videoId == currentSongId)
+    console.log('song info', song);
+    return song.artist.name
+  }
 
   function renderResult() {
     let comp;
@@ -39,8 +53,8 @@ function Results() {
               ))}
               <div className="sticky-player">
                 <div>
-                  <p>Songname</p>
-                  <p>Artist</p>
+                  <p>{currentSongId != undefined ? getSongName() : ''}</p>
+                  <p>{currentSongId != undefined ? getSongArtist() : ''}</p>
                 </div>
                 <PlayerControls id={currentSongId} />
               </div>

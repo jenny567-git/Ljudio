@@ -27,7 +27,7 @@ function PlayerControls({ id }) {
     // calling global variable
     console.log("id", id);
     window.player.loadVideoById(id);
-    window.player.playVideo();
+    // window.player.playVideo();
     setCurrentSongId(id)
   };
 

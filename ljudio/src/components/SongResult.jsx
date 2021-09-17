@@ -25,6 +25,10 @@ function SongResult({ result }) {
   //     <i className="fas fa-play"></i>
   //     {/* <i className="fas fa-pause"></i> */}
   //   </button>
+  const sendToPlayer = () =>{
+    console.log('in send to player', result.videoId);
+    setCurrentSongId(result.videoId)
+  }
 
   return (
     <div className="result-div">
@@ -45,6 +49,11 @@ function SongResult({ result }) {
           Title: <span style={{ fontWeight: "bold" }}>{result.name}</span>
         </p>
       </div>
+      {/* <div>
+      <button className="btn" onClick={(e) => sendToPlayer()}>
+        <i className="fas fa-play"></i>
+      </button>
+      </div> */}
       <PlayerControls id={result.videoId} />
       <div>
         <button className="btn btn-toLink" onClick={toSongLink}>

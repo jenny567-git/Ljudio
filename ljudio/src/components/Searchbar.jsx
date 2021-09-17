@@ -12,12 +12,11 @@ function Searchbar() {
 
   const search2 = async (e) => {
     e.preventDefault();
-    console.log('loading in start of api', isLoading);
     setLoading(true)
     const radiovalue = document.querySelector(
       'input[type="radio"]:checked'
     ).value;
-    console.log("radio", radiovalue);
+    console.log("radiobutton in search:", radiovalue);
     
     setType(radiovalue);
     switch (radiovalue) {
@@ -34,18 +33,14 @@ function Searchbar() {
       default:
         var response = await fetch(
           "https://yt-music-api.herokuapp.com/api/yt/songs/" + searchString
-        ); // Default is GET
+          ); 
         break;
     }
     var result = await response.json();
     if (result) {
-      console.log("aync", result);
       //save results to store context
       setResults(result);
-      console.log('radiovalue ', radiovalue);
-      console.log("context", result);
       setLoading(false)
-      // console.log('loading in end of api', isLoading);
     }
   };
 

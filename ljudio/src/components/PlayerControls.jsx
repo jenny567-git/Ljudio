@@ -43,6 +43,7 @@ function PlayerControls({ id }) {
       console.log('currentsongindex:', currentSongIndex);
       let nextSong = resArray[currentSongIndex+1];
       console.log('next song:', nextSong);
+      setCurrentSongId(nextSong.videoId)
       window.player.loadVideoById(nextSong.videoId);
     }
   }
@@ -55,6 +56,7 @@ function PlayerControls({ id }) {
       console.log('currentsongindex:', currentSongIndex);
       let prevSong = resArray[currentSongIndex-1];
       console.log('prev song:', prevSong);
+      setCurrentSongId(prevSong.videoId)
       window.player.loadVideoById(prevSong.videoId);
     }
   }

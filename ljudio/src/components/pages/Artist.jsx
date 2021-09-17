@@ -5,10 +5,12 @@ import { StoreContext } from "../../utils/store";
 function Artist() {
   const {
     isLoading: [isLoading, setLoading],
-    artistResult: [getArtistResult, setArtistResult],
+    artistResult: [artistResult, setArtistResult],
   } = useContext(StoreContext);
-  // const { artistId:[getArtistId, setArtistId] } = useContext(StoreContext);
-//   const imgUrl = getArtistResult.thumbnails[0].url;
+  
+  //commented out due to occasionally api error
+  //   const imgUrl = getArtistResult.thumbnails[0].url;
+  
   let { id } = useParams();
 
   useEffect(() => {
@@ -16,7 +18,6 @@ function Artist() {
   }, []); //on mount
 
   const getArtist = async (e) => {
-    // console.log("in artist id", getArtistId);
     console.log("param id", id);
     setLoading(true);
     var response = await fetch(
@@ -32,13 +33,13 @@ function Artist() {
 
   function renderResult() {
     let comp;
-    console.log("artist:", getArtistResult);
+    console.log("artist:", artistResult);
     if (!isLoading) {
       comp = (
         <div>
           {/* <img src={imgUrl} alt="" className="artistImg"/> */}
-          <h3>{getArtistResult.name}</h3>
-          <p>{getArtistResult.description}</p>
+          <h3>{artistResult.name}</h3>
+          <p>{artistResult.description}</p>
         </div>
       );
     }
@@ -47,7 +48,6 @@ function Artist() {
 
   return (
     <div className="container">
-      {/* in artists */}
       {renderResult()}
     </div>
   );

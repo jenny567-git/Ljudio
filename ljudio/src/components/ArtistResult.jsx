@@ -5,8 +5,7 @@ import { StoreContext } from "../utils/store";
 
 function ArtistResult({ result }) {
   const imgUrl = result.thumbnails[1].url;
-  const { artistResult:[getArtistResult, setArtistResult] } = useContext(StoreContext);
-  const { artistId:[getArtistId, setArtistId] } = useContext(StoreContext);
+  const { artistResult:[artistResult, setArtistResult] } = useContext(StoreContext);
   const {isLoading: [isLoading, setLoading]} = useContext(StoreContext);
   let history = useHistory()
 

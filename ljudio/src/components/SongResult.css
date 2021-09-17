@@ -12,6 +12,7 @@
 
 .song-info{
     margin: 0 1vw;
+    flex-grow: 1;
 }
 
 @media screen and (max-width:650px){

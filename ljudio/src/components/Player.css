@@ -1,5 +1,5 @@
 .btn{
-    background-color: #555555;/* Green */
+    background-color: #555555;
     border: none;
     color: white;
     padding: 15px 32px;
@@ -8,4 +8,11 @@
     display: inline-block;
     font-size: 10px;
     border-radius: 8px;
+    border: 1px outset #555;
+}
+
+.btn-toLink{
+    background: lightgray;
+    color: black;
+    border: 1px outset lightgray;
 }

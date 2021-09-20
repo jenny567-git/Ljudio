@@ -17,7 +17,8 @@ function ArtistResult({ result }) {
     <div className="result-artists">
       {/* <a href={`/artists/` + result.browseId}>Go to</a> */}
       <img src={imgUrl} alt="" onClick={toArtistLink} />
-      <p>{result.name}</p>
+      <br />
+      <a href={'/artist/' + result.browseId}>{result.name}</a>
     </div>
   );
 }

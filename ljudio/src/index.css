@@ -90,7 +90,7 @@ button{
   display: flex;
   justify-content: space-between;  
   align-items: center;
-  padding: 0 2vw;
+  padding: 0.5vw 1vw;
 }
 
 .artist-grid{
@@ -104,9 +104,19 @@ button{
   /* align-items: center; */
 }
 
+.result-artists{
+  margin-bottom: 2vw;
+}
+
 .result-artists img{
   cursor: pointer;
   border-radius: 10px;
+}
+
+
+.result-artists a{
+  text-decoration: none;
+  color: black;
 }
 
 .artistImg{

@@ -144,7 +144,7 @@ button{
 
 .btn:active{
   box-shadow: 0 1px #666;
-  transform: translateY(4px);
+  transform: translateY(2px);
 }
 
 .btn-toLink{

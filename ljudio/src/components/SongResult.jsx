@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import PlayerControls from "./PlayerControls";
 import { StoreContext } from "../utils/store";
 import { useParams } from "react-router-dom";
@@ -7,7 +7,7 @@ import { play } from "./PlayerControls";
 
 function SongResult({ result }) {
   const url = result.thumbnails[0].url;
-  // const [isCopied, setCopy] = useState(false)
+  const [isCopied, setCopy] = useState(false)
   const {
     currentSongId: [currentSongId, setCurrentSongId],
     isPlaying: [isPlaying, setPlaying],
@@ -19,12 +19,6 @@ function SongResult({ result }) {
     setPlaying(false);
     history.push("/song/" + result.videoId);
   };
-
-  //removed old button from song-info
-  // <button onClick={(e) => songId(result.videoId)}>
-  //     <i className="fas fa-play"></i>
-  //     {/* <i className="fas fa-pause"></i> */}
-  //   </button>
 
   const sendToPlayer = () => {
     console.log("in send to player", result.videoId);
@@ -72,6 +66,10 @@ function SongResult({ result }) {
       <div>
         <button className="btn btn-toLink" onClick={toSongLink}>
           <i className="fas fa-share"></i>
+        </button>
+        <button className="btn btn-toLink" onClick={() => copyBtn()} >
+          {!isCopied ? 'Copy' : 'Copied!'}
+          {/* Copy */}
         </button>
       </div>
     </div>

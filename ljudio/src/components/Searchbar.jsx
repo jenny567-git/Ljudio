@@ -14,7 +14,7 @@ function Searchbar() {
     const radiovalue = document.querySelector(
       'input[type="radio"]:checked'
     ).value;
-    console.log("radiobutton in search:", radiovalue);
+    // console.log("radiobutton in search:", radiovalue);
     
     setType(radiovalue);
     switch (radiovalue) {

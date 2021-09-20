@@ -3,7 +3,7 @@ import { StoreContext } from "../utils/store";
 
 export const play = (id) => {
   // calling global variable
-  console.log("id", id);
+  // console.log("id", id);
   // window.player.playVideo();
   window.player.loadVideoById(id);
   // setCurrentSongId(id)
@@ -18,8 +18,8 @@ function PlayerControls() {
   } = useContext(StoreContext);
 
   const togglePlay = () => {
-    setPlaying(!isPlaying);
     isPlaying ? pause() : play(currentSongId);
+    setPlaying(!isPlaying);
   };
 
   //takes care of pause the music upon component unmounts
@@ -32,6 +32,8 @@ function PlayerControls() {
 
 
   const pause = () => {
+    console.log('is playing', isPlaying);
+    console.log('duration', window.player.getDuration());
     window.player.pauseVideo();
   };
 
@@ -75,6 +77,7 @@ function PlayerControls() {
       <button className="btn" onClick={() => next()}>
         <i className="fas fa-step-forward"></i>
       </button>
+      {/* <p>{isPlaying ? 'Playing now' : ''}</p> */}
     </div>
   );
 }

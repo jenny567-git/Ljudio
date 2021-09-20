@@ -119,6 +119,11 @@ button{
   border: 1px outset #555;
 }
 
+.btn:active{
+  box-shadow: 0 1px #666;
+  transform: translateY(4px);
+}
+
 .btn-toLink{
   background: lightgray;
   color: black;

@@ -23,21 +23,21 @@ function Results() {
   const getSongName = () => {
     let resArray = Array.from(results.content)
     let song = resArray.find(x => x.videoId == currentSongId)
-    console.log('song info', song);
+    // console.log('song info', song);
     return song.name
   }
 
   const getSongArtist = () => {
     let resArray = Array.from(results.content)
     let song = resArray.find(x => x.videoId == currentSongId)
-    console.log('song info', song);
+    // console.log('song info', song);
     return song.artist.name
   }
 
   function renderResult() {
     let comp;
     // console.log("what is type", type);
-    console.log("what is results:", results);
+    // console.log("what is results:", results);
     if (results.content !== undefined && !isLoading) {
       switch (type) {
         case "artists":

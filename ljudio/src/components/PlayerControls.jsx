@@ -1,8 +1,6 @@
 import React, { useState, useEffect, useContext, Component } from "react";
 import { StoreContext } from "../utils/store";
 
-import "./Player.css";
-
 export const play = (id) => {
   // calling global variable
   console.log("id", id);
@@ -26,7 +24,7 @@ function PlayerControls() {
 
   //takes care of pause the music upon component unmounts
   useEffect(() => {
-      
+
     return () => {
       pause()
     }

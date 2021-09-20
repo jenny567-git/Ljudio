@@ -31,16 +31,49 @@ main {
   margin: 2vh 0;
 }
 
+header{
+  background: lightgray;
+}
+
+img{
+  width: 15vh;
+}
+
+nav{
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+nav>a{
+  /* margin-right: 10vw; */
+  text-decoration: none;
+  font-size: 1.5em;
+  font-weight: bold;
+  color: rgb(56, 53, 53);
+}
+
+form{
+  margin: 2vw 0;
+}
+
+input[type=text]{
+  width: 30vh;
+  /* height: 3vh; */
+  border-radius: 5px;
+  border-color: gray;
+  padding: 0.5vh;
+}
+
+button{
+  padding: 0.5vh;
+  border-radius: 5px;
+}
+
 .container{
   width: 90%;
   margin: auto;
 }
 
-/* 
-footer{
-  display: flex;
-  flex-direction: column;
-} */
 .sticky-player{
   position: sticky;
   bottom: 0;
@@ -73,8 +106,51 @@ footer{
   width: auto
 }
 
+.btn{
+  background-color: #555555;
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 10px;
+  border-radius: 8px;
+  border: 1px outset #555;
+}
+
+.btn-toLink{
+  background: lightgray;
+  color: black;
+  border: 1px outset lightgray;
+}
+.result-div{
+  background: rgb(134, 207, 200);
+  display: flex;
+  padding: 1vw 2vw;
+  border-radius: 10px;
+  margin: 1vw 0
+}
+
+.result-div p{
+ margin: 0;
+}
+
+.song-info{
+  margin: 0 1vw;
+  flex-grow: 1;
+}
+
+footer>div{
+  background: lightgray;
+  padding: 2vh;
+}
 
 @media screen and (max-width:650px){
+  nav{
+    flex-direction: column;
+  }
+
   .artist-grid{
     display: block;
   }

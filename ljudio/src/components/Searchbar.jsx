@@ -1,8 +1,6 @@
 import React, { useState, useContext, useEffect } from "react";
 import { StoreContext } from "../utils/store";
 
-import "./Searchbar.css";
-
 function Searchbar() {
   const [searchString, setSearchString] = useState("");
   // const [type, setType] = useState("songs");

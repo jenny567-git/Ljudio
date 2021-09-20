@@ -1,9 +1,10 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { StoreContext } from "../../utils/store";
 import PlayerControls from "../PlayerControls";
 
 function Song() {
+  const [isCopied, setCopy] = useState(false)
   const {
     isLoading: [isLoading, setLoading],
     songResult: [songResult, setSongResult],
@@ -37,6 +38,17 @@ function Song() {
     }
   };
 
+  const copyBtn = () => {
+    let link = window.location.href
+    navigator.clipboard.writeText(link);
+    setCopy(true)
+    // if(navigator.clipboard.readText().then(t => t != window.location.href + "song/" + result.videoId))
+    // {
+    //   console.log('copy: not same');
+    // }
+    // alert('Link copied: ' + link)
+  };
+
   function renderResult() {
     let comp;
     if (!isLoading) {
@@ -47,6 +59,11 @@ function Song() {
           <p>Artist: {songResult != undefined ? songResult.artist.name : "N/A"}</p>
           Song player
           <PlayerControls />
+          <br />
+          <button className="btn btn-toLink" onClick={() => copyBtn()}>
+          {!isCopied ? 'Copy' : 'Copied!'}
+          {/* Copy */}
+        </button>
         </div>
       );
     }

@@ -1,18 +1,19 @@
 import React, { useState, useContext } from "react";
 import PlayerControls from "./PlayerControls";
 import { StoreContext } from "../utils/store";
+import { useParams } from "react-router-dom";
 import { useHistory } from "react-router-dom";
 import { play } from "./PlayerControls";
 
-import "./SongResult.css";
-
 function SongResult({ result }) {
   const url = result.thumbnails[0].url;
+  // const [isCopied, setCopy] = useState(false)
   const {
     currentSongId: [currentSongId, setCurrentSongId],
-    isPlaying: [isPlaying, setPlaying]
+    isPlaying: [isPlaying, setPlaying],
   } = useContext(StoreContext);
   let history = useHistory();
+  let urlLink = useParams();
 
   const toSongLink = () => {
     setPlaying(false);
@@ -25,12 +26,23 @@ function SongResult({ result }) {
   //     {/* <i className="fas fa-pause"></i> */}
   //   </button>
 
-  const sendToPlayer = () =>{
-    console.log('in send to player', result.videoId);
-    setCurrentSongId(result.videoId)
+  const sendToPlayer = () => {
+    console.log("in send to player", result.videoId);
+    setCurrentSongId(result.videoId);
     setPlaying(true);
-    play(result.videoId)
-  }
+    play(result.videoId);
+  };
+
+  const copyBtn = () => {
+    let link = window.location.href + "song/" + result.videoId
+    navigator.clipboard.writeText(link);
+    setCopy(true)
+    // if(navigator.clipboard.readText().then(t => t != window.location.href + "song/" + result.videoId))
+    // {
+    //   console.log('copy: not same');
+    // }
+    // alert('Link copied: ' + link)
+  };
 
   return (
     <div className="result-div">
@@ -52,9 +64,9 @@ function SongResult({ result }) {
         </p>
       </div>
       <div>
-      <button className="btn" onClick={(e) => sendToPlayer()}>
-        <i className="fas fa-play"></i>
-      </button>
+        <button className="btn" onClick={(e) => sendToPlayer()}>
+          <i className="fas fa-play"></i>
+        </button>
       </div>
       {/* <PlayerControls id={result.videoId} /> */}
       <div>

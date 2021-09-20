@@ -57,7 +57,7 @@ function Results() {
               ))}
               <div className="sticky-player">
                 <div>
-                  <p>{currentSongId != undefined ? getSongName() : ""}</p>
+                  <p><b>{currentSongId != undefined ? getSongName() : ""}</b></p>
                   <p><i>{currentSongId != undefined ? getSongArtist() : ""}</i></p>
                 </div>
                 <div className="sticky-playerControls">

@@ -6,18 +6,17 @@ import { useHistory } from "react-router-dom";
 import { play } from "./PlayerControls";
 
 //source: https://www.npmjs.com/package/react-toastify
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function SongResult({ result }) {
   const url = result.thumbnails[0].url;
-  const [isCopied, setCopy] = useState(false)
+  const [isCopied, setCopy] = useState(false);
   const {
     currentSongId: [currentSongId, setCurrentSongId],
     isPlaying: [isPlaying, setPlaying],
   } = useContext(StoreContext);
   let history = useHistory();
-  let urlLink = useParams();
 
   const toSongLink = () => {
     setPlaying(false);
@@ -32,14 +31,16 @@ function SongResult({ result }) {
   };
 
   const copyBtn = () => {
-    let link = window.location.href + "song/" + result.videoId
+    let link = window.location.href + "song/" + result.videoId;
     navigator.clipboard.writeText(link);
-    let msg = 'Link copied: ' + link
-    toast.success(msg, {hideProgressBar: true,})
+    let msg = "Link copied: " + link;
+    toast.success(msg, { hideProgressBar: true });
   };
 
   return (
     <div className="result-div">
+      <div className="songresult-innerdiv">
+
       <img
         src={url}
         alt=""
@@ -47,7 +48,7 @@ function SongResult({ result }) {
           borderRadius: "10px",
           width: "60px",
         }}
-      />
+        />
       <div className="song-info">
         <p>
           Artist:
@@ -57,21 +58,19 @@ function SongResult({ result }) {
           Title: <span style={{ fontWeight: "bold" }}>{result.name}</span>
         </p>
       </div>
-      <div>
+        </div>
+      <div className="songresult-btns">
         <button className="btn" onClick={(e) => sendToPlayer()}>
           <i className="fas fa-play"></i>
         </button>
-      </div>
-      {/* <PlayerControls id={result.videoId} /> */}
-      <div>
         <button className="btn btn-toLink" onClick={toSongLink}>
           <i className="fas fa-share"></i>
         </button>
-        <button className="btn btn-toLink" onClick={() => copyBtn()} >
+        <button className="btn btn-toLink" onClick={() => copyBtn()}>
           {/* {!isCopied ? 'Copy' : 'Copied!'} */}
           Copy
         </button>
-        <ToastContainer autoClose={3000}/>
+        <ToastContainer autoClose={3000} />
       </div>
     </div>
   );

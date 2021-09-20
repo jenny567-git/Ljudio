@@ -8,7 +8,7 @@ export function StoreProvider({ children }) {
   const [type, setType] = useState()
   const [isLoading, setLoading] = useState(true)
   const [artistResult, setArtistResult] = useState([])
-  const [songResult, setSongResult] = useState([])
+  const [songResult, setSongResult] = useState()
   const [isPlaying, setPlaying] = useState(false);
 
   const store = {

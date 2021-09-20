@@ -14,33 +14,54 @@ function Song() {
   let { id } = useParams();
 
   useEffect(() => {
-    setCurrentSongId(id)
-    
+    setCurrentSongId(id);
+    fetchSongInfo();
     if (results.content == undefined) {
       setLoading(false);
+      console.log('song result', songResult);
       renderResult();
     }
-
   }, []); //on first render
+
+  const fetchSongInfo = async () => {
+    setLoading(true)
+    var response = await fetch(
+      "https://yt-music-api.herokuapp.com/api/yt/songs/" + id
+    );
+    var result = await response.json();
+    if (result) {
+      let song = result.content.find((x) => x.videoId == id);
+      setSongResult(song)
+      console.log('song', song);
+      setLoading(false)
+    }
+  };
+
+  // const getSongName = () => {
+  //   return songResult.name;
+  // };
+
+  // const getSongArtist = () => {
+  //   return songResult.artist.name;
+  // };
 
   function renderResult() {
     let comp;
     if (!isLoading) {
       comp = (
         <div>
+          <img src={songResult != undefined ? songResult.thumbnails[1].url : ""} alt="" />
+          <p>Title: {songResult != undefined ? songResult.name : "N/A"}</p>
+          <p>Artist: {songResult != undefined ? songResult.artist.name : "N/A"}</p>
           Song player
-          <PlayerControls/>
+          <PlayerControls />
         </div>
       );
     }
     return <>{comp}</>;
   }
 
-  return (
-    <div className="container">
-      {renderResult()}
-    </div>
-  );
+  return <div className="container">{renderResult()}</div>;
 }
 
 export default Song;

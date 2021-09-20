@@ -10,6 +10,7 @@ function Results() {
     results: [results],
     isLoading: [isLoading],
     currentSongId: [currentSongId, setCurrentSongId],
+    songResult: [songResult, setSongResult],
   } = useContext(StoreContext);
   
   // useEffect(() => {

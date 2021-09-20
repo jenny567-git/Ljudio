@@ -48,7 +48,7 @@ function Searchbar() {
     <form>
       <input
         type="text"
-        placeholder="Search for artists, albums or tracks"
+        placeholder="Search for artists or tracks"
         onChange={(e) => setSearchString(e.target.value)}
       />
       <button onClick={search2}>
@@ -72,10 +72,10 @@ function Searchbar() {
         <label htmlFor="dewey">Artists</label>
       </div>
 
-      <div>
+      {/* <div>
         <input type="radio" id="louie" name="drone" value="albums" />
         <label htmlFor="louie">Albums</label>
-      </div>
+      </div> */}
     </form>
   );
 }

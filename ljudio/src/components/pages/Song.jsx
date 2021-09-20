@@ -37,14 +37,6 @@ function Song() {
     }
   };
 
-  // const getSongName = () => {
-  //   return songResult.name;
-  // };
-
-  // const getSongArtist = () => {
-  //   return songResult.artist.name;
-  // };
-
   function renderResult() {
     let comp;
     if (!isLoading) {

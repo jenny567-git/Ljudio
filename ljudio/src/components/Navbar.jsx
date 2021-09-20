@@ -14,8 +14,9 @@ function Navbar() {
             <img src={logo} alt="" />
           </Link>
           <Link to="/">Home</Link>
-          <Link to="/artists">All artists</Link>
-          <Link to="/songs">All songs</Link>
+          {/* <Link to="/artists">All artists</Link> */}
+          {/* <Link to="/songs">All songs</Link> */}
+          <Link to="/about">About</Link>
           {/* <Searchbar/> */}
         </nav>
     </div>

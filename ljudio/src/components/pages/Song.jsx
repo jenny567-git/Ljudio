@@ -1,66 +1,76 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { StoreContext } from "../../utils/store";
 import PlayerControls from "../PlayerControls";
 
 function Song() {
+  const [isCopied, setCopy] = useState(false)
   const {
     isLoading: [isLoading, setLoading],
     songResult: [songResult, setSongResult],
+    currentSongId: [currentSongId, setCurrentSongId],
     results: [results, setResults],
   } = useContext(StoreContext);
 
   let { id } = useParams();
 
-  //problem with direct link, empty page
-
-//   const getSong = async()=> {
-//     console.log("song id", id);
-//     setLoading(true)
-//     await id
-//     if(id){
-//         setLoading(false)
-//     }
-//   }
-
   useEffect(() => {
-    // console.log("in song:", results.content);
-    // console.log('array: ', Array.from(results));
+    setCurrentSongId(id);
+    fetchSongInfo();
     if (results.content == undefined) {
-      // console.log("in if");
-      // console.log('id in song', id);
       setLoading(false);
+      console.log('song result', songResult);
       renderResult();
     }
-  }, []); //on mount
+  }, []); //on first render
 
-  // const getSong = async() =>{
-  //     setLoading(true)
-  //     await setSongResult(id)
-  //     setLoading(false)
-  // }
+  const fetchSongInfo = async () => {
+    setLoading(true)
+    var response = await fetch(
+      "https://yt-music-api.herokuapp.com/api/yt/songs/" + id
+    );
+    var result = await response.json();
+    if (result) {
+      let song = result.content.find((x) => x.videoId == id);
+      setSongResult(song)
+      console.log('song', song);
+      setLoading(false)
+    }
+  };
+
+  const copyBtn = () => {
+    let link = window.location.href
+    navigator.clipboard.writeText(link);
+    setCopy(true)
+    // if(navigator.clipboard.readText().then(t => t != window.location.href + "song/" + result.videoId))
+    // {
+    //   console.log('copy: not same');
+    // }
+    // alert('Link copied: ' + link)
+  };
 
   function renderResult() {
     let comp;
-    // console.log("in render: song");
     if (!isLoading) {
-      // console.log("in render song loading");
       comp = (
         <div>
+          <img src={songResult != undefined ? songResult.thumbnails[1].url : ""} alt="" />
+          <p>Title: {songResult != undefined ? songResult.name : "N/A"}</p>
+          <p>Artist: {songResult != undefined ? songResult.artist.name : "N/A"}</p>
           Song player
-          <PlayerControls id={id} />
+          <PlayerControls />
+          <br />
+          <button className="btn btn-toLink" onClick={() => copyBtn()}>
+          {!isCopied ? 'Copy' : 'Copied!'}
+          {/* Copy */}
+        </button>
         </div>
       );
     }
     return <>{comp}</>;
   }
 
-  return (
-    <div className="container">
-      {/* in songs */}
-      {renderResult()}
-    </div>
-  );
+  return <div className="container">{renderResult()}</div>;
 }
 
 export default Song;

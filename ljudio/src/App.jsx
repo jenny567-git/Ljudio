@@ -7,6 +7,7 @@ import Footer from "./components/Footer";
 import Artist from "./components/pages/Artist";
 import Song from "./components/pages/Song";
 import Home from "./components/pages/Home";
+import About from "./components/pages/About";
 
 
 function App() {
@@ -25,6 +26,9 @@ function App() {
           </Route>
           <Route path="/song/:id">
             <Song />
+          </Route>
+          <Route path="/about">
+            <About />
           </Route>
         </Switch>
       </main>

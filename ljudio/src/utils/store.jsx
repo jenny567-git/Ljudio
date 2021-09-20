@@ -9,19 +9,18 @@ export function StoreProvider({ children }) {
   const [currentSongId, setCurrentSongId] = useState()
   const [type, setType] = useState()
   const [isLoading, setLoading] = useState(true)
-  const [getArtistResult, setArtistResult] = useState([])
-  const [songResult, setSongResult] = useState([])
-  const [getArtistId, setArtistId] = useState([])
-
+  const [artistResult, setArtistResult] = useState([])
+  const [songResult, setSongResult] = useState()
+  const [isPlaying, setPlaying] = useState(false);
 
   const store = {
     results: [results, setResults],
     currentSongId: [currentSongId, setCurrentSongId],
     type: [type, setType],
     isLoading: [isLoading, setLoading],
-    artistResult: [getArtistResult, setArtistResult],
+    artistResult: [artistResult, setArtistResult],
     songResult: [songResult, setSongResult],
-    artistId: [getArtistId, setArtistId]
+    isPlaying: [isPlaying, setPlaying]
   }
 
   return (

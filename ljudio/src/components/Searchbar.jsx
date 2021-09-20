@@ -1,8 +1,6 @@
 import React, { useState, useContext, useEffect } from "react";
 import { StoreContext } from "../utils/store";
 
-import "./Searchbar.css";
-
 function Searchbar() {
   const [searchString, setSearchString] = useState("");
   // const [type, setType] = useState("songs");
@@ -12,12 +10,11 @@ function Searchbar() {
 
   const search2 = async (e) => {
     e.preventDefault();
-    console.log('loading in start of api', isLoading);
     setLoading(true)
     const radiovalue = document.querySelector(
       'input[type="radio"]:checked'
     ).value;
-    console.log("radio", radiovalue);
+    // console.log("radiobutton in search:", radiovalue);
     
     setType(radiovalue);
     switch (radiovalue) {
@@ -34,18 +31,14 @@ function Searchbar() {
       default:
         var response = await fetch(
           "https://yt-music-api.herokuapp.com/api/yt/songs/" + searchString
-        ); // Default is GET
+          ); 
         break;
     }
     var result = await response.json();
     if (result) {
-      console.log("aync", result);
       //save results to store context
       setResults(result);
-      console.log('radiovalue ', radiovalue);
-      console.log("context", result);
       setLoading(false)
-      // console.log('loading in end of api', isLoading);
     }
   };
 
@@ -53,7 +46,7 @@ function Searchbar() {
     <form>
       <input
         type="text"
-        placeholder="Search for artists, albums or tracks"
+        placeholder="Search for artists or tracks"
         onChange={(e) => setSearchString(e.target.value)}
       />
       <button onClick={search2}>
@@ -77,10 +70,10 @@ function Searchbar() {
         <label htmlFor="dewey">Artists</label>
       </div>
 
-      <div>
+      {/* <div>
         <input type="radio" id="louie" name="drone" value="albums" />
         <label htmlFor="louie">Albums</label>
-      </div>
+      </div> */}
     </form>
   );
 }

@@ -14,23 +14,26 @@ function Results() {
     isPlaying: [isPlaying, setPlaying],
   } = useContext(StoreContext);
 
-  const getSongName = () => {
-    let resArray = Array.from(results.content);
-    let song = resArray.find((x) => x.videoId == currentSongId);
-    // console.log('song info', song);
+  let song;
 
-    if(song == undefined) return ''
-    
+  const findSong = () => {
+    let resArray = Array.from(results.content);
+    song = resArray.find((x) => x.videoId == currentSongId);
+  };
+
+  const getSongName = () => {
+    if (song == undefined) {
+      findSong();
+      if (song == undefined) return "";
+    }
     return song.name;
   };
 
   const getSongArtist = () => {
-    let resArray = Array.from(results.content);
-    let song = resArray.find((x) => x.videoId == currentSongId);
-    // console.log('song info', song);
-
-    if(song == undefined) return ''
-  
+    if (song == undefined) {
+      findSong();
+      if (song == undefined) return "";
+    }
     return song.artist.name;
   };
 

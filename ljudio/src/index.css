@@ -181,4 +181,9 @@ footer>div{
   .btn{
     font-size: 10px;
   }
+
+  .sticky-playerControls{
+    display: flex;
+    flex-direction: row;
+  }
 }

@@ -65,7 +65,7 @@ function PlayerControls() {
     }
   }
   return (
-    <div>
+    <>
       <button className="btn" onClick={() => previous()}>
         <i className="fas fa-step-backward"></i>
       </button>
@@ -80,7 +80,7 @@ function PlayerControls() {
         <i className="fas fa-step-forward"></i>
       </button>
       {/* <p>{isPlaying ? 'Playing now' : ''}</p> */}
-    </div>
+    </>
   );
 }
 

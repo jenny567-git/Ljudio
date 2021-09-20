@@ -2,6 +2,7 @@ import React, { useState, useContext } from "react";
 import PlayerControls from "./PlayerControls";
 import { StoreContext } from "../utils/store";
 import { useHistory } from "react-router-dom";
+import { play } from "./PlayerControls";
 
 import "./SongResult.css";
 
@@ -9,12 +10,9 @@ function SongResult({ result }) {
   const url = result.thumbnails[0].url;
   const {
     currentSongId: [currentSongId, setCurrentSongId],
+    isPlaying: [isPlaying, setPlaying]
   } = useContext(StoreContext);
   let history = useHistory();
-
-  // const songId = (id) => {
-  //   setCurrentSongId(id);
-  // };
 
   const toSongLink = () => {
     history.push("/song/" + result.videoId);
@@ -25,9 +23,12 @@ function SongResult({ result }) {
   //     <i className="fas fa-play"></i>
   //     {/* <i className="fas fa-pause"></i> */}
   //   </button>
+  
   const sendToPlayer = () =>{
     console.log('in send to player', result.videoId);
     setCurrentSongId(result.videoId)
+    setPlaying(true);
+    play(result.videoId)
   }
 
   return (
@@ -49,12 +50,12 @@ function SongResult({ result }) {
           Title: <span style={{ fontWeight: "bold" }}>{result.name}</span>
         </p>
       </div>
-      {/* <div>
+      <div>
       <button className="btn" onClick={(e) => sendToPlayer()}>
         <i className="fas fa-play"></i>
       </button>
-      </div> */}
-      <PlayerControls id={result.videoId} />
+      </div>
+      {/* <PlayerControls id={result.videoId} /> */}
       <div>
         <button className="btn btn-toLink" onClick={toSongLink}>
           <i className="fas fa-share"></i>

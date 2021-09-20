@@ -9,6 +9,7 @@ export function StoreProvider({ children }) {
   const [isLoading, setLoading] = useState(true)
   const [artistResult, setArtistResult] = useState([])
   const [songResult, setSongResult] = useState([])
+  const [isPlaying, setPlaying] = useState(false);
 
   const store = {
     results: [results, setResults],
@@ -17,6 +18,7 @@ export function StoreProvider({ children }) {
     isLoading: [isLoading, setLoading],
     artistResult: [artistResult, setArtistResult],
     songResult: [songResult, setSongResult],
+    isPlaying: [isPlaying, setPlaying]
   }
 
   return (

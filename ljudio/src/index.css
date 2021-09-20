@@ -45,7 +45,7 @@ footer{
   position: sticky;
   bottom: 0;
   background: lightgray;
-  border: 1px outset lightgray;
+  border: 1px outset rgb(180, 180, 180);
   border-radius: 5px;
   display: flex;
   justify-content: space-between;  

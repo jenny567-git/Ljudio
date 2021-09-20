@@ -3,16 +3,25 @@ import { StoreContext } from "../utils/store";
 
 import "./Player.css";
 
+export const play = (id) => {
+  // calling global variable
+  console.log("id", id);
+  // window.player.playVideo();
+  window.player.loadVideoById(id);
+  // setCurrentSongId(id)
+};
+
 function PlayerControls({ id }) {
-  const [isPlaying, setPlaying] = useState(false);
+  // const [isPlaying, setPlaying] = useState(false);
   const {
     results: [results],
     currentSongId: [currentSongId, setCurrentSongId],
+    isPlaying: [isPlaying, setPlaying]
   } = useContext(StoreContext);
 
   const togglePlay = () => {
     setPlaying(!isPlaying);
-    isPlaying ? pause() : play();
+    isPlaying ? pause() : play(currentSongId);
   };
 
   //takes care of pause the music upon component unmounts
@@ -23,13 +32,6 @@ function PlayerControls({ id }) {
     }
   }, [])
 
-  const play = () => {
-    // calling global variable
-    console.log("id", id);
-    window.player.loadVideoById(id);
-    // window.player.playVideo();
-    setCurrentSongId(id)
-  };
 
   const pause = () => {
     window.player.pauseVideo();

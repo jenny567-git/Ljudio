@@ -11,19 +11,16 @@ function Results() {
     isLoading: [isLoading],
     currentSongId: [currentSongId, setCurrentSongId],
     songResult: [songResult, setSongResult],
+    isPlaying: [isPlaying, setPlaying],
   } = useContext(StoreContext);
-
-  // useEffect(() => {
-  //   if (!isLoading) {
-  //     console.log("loading in effect", isLoading);
-  //     renderResult();
-  //   }
-  // }, [results]);
 
   const getSongName = () => {
     let resArray = Array.from(results.content);
     let song = resArray.find((x) => x.videoId == currentSongId);
     // console.log('song info', song);
+
+    if(song == undefined) return ''
+    
     return song.name;
   };
 
@@ -31,6 +28,9 @@ function Results() {
     let resArray = Array.from(results.content);
     let song = resArray.find((x) => x.videoId == currentSongId);
     // console.log('song info', song);
+
+    if(song == undefined) return ''
+  
     return song.artist.name;
   };
 

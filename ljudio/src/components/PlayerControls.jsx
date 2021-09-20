@@ -47,6 +47,7 @@ function PlayerControls() {
       console.log('next song:', nextSong);
       setCurrentSongId(nextSong.videoId)
       window.player.loadVideoById(nextSong.videoId);
+      setPlaying(true)
     }
   }
 
@@ -60,6 +61,7 @@ function PlayerControls() {
       console.log('prev song:', prevSong);
       setCurrentSongId(prevSong.videoId)
       window.player.loadVideoById(prevSong.videoId);
+      setPlaying(true)
     }
   }
   return (

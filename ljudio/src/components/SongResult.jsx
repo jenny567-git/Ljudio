@@ -5,6 +5,10 @@ import { useParams } from "react-router-dom";
 import { useHistory } from "react-router-dom";
 import { play } from "./PlayerControls";
 
+//source: https://www.npmjs.com/package/react-toastify
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 function SongResult({ result }) {
   const url = result.thumbnails[0].url;
   const [isCopied, setCopy] = useState(false)
@@ -30,12 +34,8 @@ function SongResult({ result }) {
   const copyBtn = () => {
     let link = window.location.href + "song/" + result.videoId
     navigator.clipboard.writeText(link);
-    setCopy(true)
-    // if(navigator.clipboard.readText().then(t => t != window.location.href + "song/" + result.videoId))
-    // {
-    //   console.log('copy: not same');
-    // }
-    // alert('Link copied: ' + link)
+    let msg = 'Link copied: ' + link
+    toast.success(msg, {hideProgressBar: true,})
   };
 
   return (
@@ -68,9 +68,10 @@ function SongResult({ result }) {
           <i className="fas fa-share"></i>
         </button>
         <button className="btn btn-toLink" onClick={() => copyBtn()} >
-          {!isCopied ? 'Copy' : 'Copied!'}
-          {/* Copy */}
+          {/* {!isCopied ? 'Copy' : 'Copied!'} */}
+          Copy
         </button>
+        <ToastContainer autoClose={3000}/>
       </div>
     </div>
   );

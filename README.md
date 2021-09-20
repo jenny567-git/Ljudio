@@ -12,7 +12,7 @@ This project uses the following technologies:
 
 ## Usage:
 1. Clone the repo
-2. Then run the following:
+2. Then run the following code in terminal:
 
 ```bash
 npm install # in ljudio directory

@@ -15,6 +15,7 @@ function SongResult({ result }) {
   let history = useHistory();
 
   const toSongLink = () => {
+    setPlaying(false);
     history.push("/song/" + result.videoId);
   };
 
@@ -23,7 +24,7 @@ function SongResult({ result }) {
   //     <i className="fas fa-play"></i>
   //     {/* <i className="fas fa-pause"></i> */}
   //   </button>
-  
+
   const sendToPlayer = () =>{
     console.log('in send to player', result.videoId);
     setCurrentSongId(result.videoId)

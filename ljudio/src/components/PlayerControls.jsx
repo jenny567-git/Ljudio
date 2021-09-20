@@ -11,7 +11,7 @@ export const play = (id) => {
   // setCurrentSongId(id)
 };
 
-function PlayerControls({ id }) {
+function PlayerControls() {
   // const [isPlaying, setPlaying] = useState(false);
   const {
     results: [results],
@@ -26,7 +26,7 @@ function PlayerControls({ id }) {
 
   //takes care of pause the music upon component unmounts
   useEffect(() => {
-    
+      
     return () => {
       pause()
     }

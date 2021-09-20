@@ -7,48 +7,29 @@ function Song() {
   const {
     isLoading: [isLoading, setLoading],
     songResult: [songResult, setSongResult],
+    currentSongId: [currentSongId, setCurrentSongId],
     results: [results, setResults],
   } = useContext(StoreContext);
 
   let { id } = useParams();
 
-  //problem with direct link, empty page
-
-//   const getSong = async()=> {
-//     console.log("song id", id);
-//     setLoading(true)
-//     await id
-//     if(id){
-//         setLoading(false)
-//     }
-//   }
-
   useEffect(() => {
-    // console.log("in song:", results.content);
-    // console.log('array: ', Array.from(results));
+    setCurrentSongId(id)
+    
     if (results.content == undefined) {
-      // console.log("in if");
-      // console.log('id in song', id);
       setLoading(false);
       renderResult();
     }
-  }, []); //on mount
 
-  // const getSong = async() =>{
-  //     setLoading(true)
-  //     await setSongResult(id)
-  //     setLoading(false)
-  // }
+  }, []); //on first render
 
   function renderResult() {
     let comp;
-    // console.log("in render: song");
     if (!isLoading) {
-      // console.log("in render song loading");
       comp = (
         <div>
           Song player
-          <PlayerControls id={id} />
+          <PlayerControls/>
         </div>
       );
     }
@@ -57,7 +38,6 @@ function Song() {
 
   return (
     <div className="container">
-      {/* in songs */}
       {renderResult()}
     </div>
   );

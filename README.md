@@ -3,8 +3,8 @@
 This is Ljudio, a music streaming site created during autumn 2021 at Newton YH in Malmo.
 
 This project uses the following technologies:
-- React
-- a Youtube API provided by Nodehill
+- ReactJS
+- a Youtube Player API provided by Nodehill
 
 ## Prerequisites
 1. Code Editor/IDE

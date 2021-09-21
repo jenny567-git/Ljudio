@@ -1,11 +1,17 @@
 import React, { useState, useEffect, useContext, Component } from "react";
 import { StoreContext } from "../utils/store";
 
+let inPause = false
+let PauseSongId = ''
+
 export const play = (id) => {
   // calling global variable
-  // console.log("id", id);
-  // window.player.playVideo();
-  window.player.loadVideoById(id);
+  if(inPause && id == PauseSongId){
+    window.player.playVideo()
+    inPause = false
+  } else {
+    window.player.loadVideoById(id);
+  }
   // setCurrentSongId(id)
 };
 
@@ -32,18 +38,26 @@ function PlayerControls() {
 
 
   const pause = () => {
-    console.log('is playing', isPlaying);
-    console.log('duration', window.player.getDuration());
+    // console.log('is playing', isPlaying);
+    // console.log('duration', window.player.getDuration());
+    inPause = true
+    PauseSongId = currentSongId
     window.player.pauseVideo();
   };
 
+  let resultArray
+  let currentSongIndex
+  const findSongIndex = () => {
+    resultArray = Array.from(results.content)
+    console.log('resArray:', resultArray);
+    currentSongIndex = resultArray.findIndex(x => x.videoId == currentSongId)
+    console.log('currentsongindex:', currentSongIndex);
+  }
+
   const next = () => {
     if(results.content){
-      let resArray = Array.from(results.content)
-      console.log('resArray:', resArray);
-      let currentSongIndex = resArray.findIndex(x => x.videoId == currentSongId)
-      console.log('currentsongindex:', currentSongIndex);
-      let nextSong = resArray[currentSongIndex+1];
+      findSongIndex()
+      let nextSong = resultArray[currentSongIndex+1];
       console.log('next song:', nextSong);
       setCurrentSongId(nextSong.videoId)
       window.player.loadVideoById(nextSong.videoId);
@@ -53,11 +67,8 @@ function PlayerControls() {
 
   const previous = () => {
     if(results.content){
-      let resArray = Array.from(results.content)
-      console.log('resArray:', resArray);
-      let currentSongIndex = resArray.findIndex(x => x.videoId == currentSongId)
-      console.log('currentsongindex:', currentSongIndex);
-      let prevSong = resArray[currentSongIndex-1];
+      findSongIndex()
+      let prevSong = resultArray[currentSongIndex-1];
       console.log('prev song:', prevSong);
       setCurrentSongId(prevSong.videoId)
       window.player.loadVideoById(prevSong.videoId);

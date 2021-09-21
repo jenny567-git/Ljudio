@@ -20,8 +20,9 @@ function Player() {
 
   //https://dev.to/ahmedsarhan/create-your-live-watch-and-date-in-react-js-no-3rd-party-hassle-1oa4
   useEffect(() => {
+    let getLive;
     if (isPlaying) {
-      setInterval(() => {
+      getLive = setInterval(() => {
         const totalsInMinutes = Math.floor(window.player.getDuration() / 60);
         const totalInSeconds = Math.floor(window.player.getDuration() % 60);
 
@@ -46,12 +47,15 @@ function Player() {
         setCurrentSec(currentSecondString);
         setTimeSlider(window.player.getCurrentTime());
 
-        if(currentInMinutes == totalsInMinutes && currentSecondString==totalSecString){
-            setPlaying(!isPlaying)
-        }
-
+        //causes problem with player play button when new search is done
+        // if(currentInMinutes == totalsInMinutes && currentSecondString==totalSecString){
+        //     setPlaying(!isPlaying)
+        // }
       }, 1000);
     }
+    return () => {
+      clearInterval(getLive);
+    };
   }, [isPlaying]);
 
   let song;

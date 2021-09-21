@@ -37,6 +37,7 @@ header{
 
 img{
   width: 15vh;
+  border-radius: 10px;
 }
 
 nav{
@@ -58,16 +59,10 @@ form{
 
 input[type=text]{
   width: 30vh;
-  /* padding: 6px; */
-  /* margin-top: 8px; */
   font-size: 16px;
   border: 1px solid gray;
   border-radius: 5px;
-  /* height: 3vh; */
-  /* border-radius: 1px; */
-  /* border-color: gray; */
   padding: 0.5vh;
-  /* overflow: hidden; */
 }
 
 button{
@@ -125,7 +120,7 @@ button{
 }
 
 .artistImg{
-  width: auto
+  width: 100%
 }
 
 .btn{
@@ -190,9 +185,44 @@ footer>div{
   margin-right: 1vw;
 }
 
-#playerSlider {
+
+.product {
   width: 100%;
-  
+  display: flex;
+}
+
+.artistProducts{
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.artistProducts>div{
+  flex: 50%;
+  /* box-shadow: 0 0 0 1px black; */
+  margin-bottom: 10px;
+}
+
+.artistProducts img{
+  margin-right: 10px;
+}
+
+.artistProducts div:nth-child(even) img{
+  margin-left: 10px;
+}
+
+#artist-title{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+#artist-title button{
+  margin-left: 1vw;
+  height:5vh;
+}
+#playerSlider {
+  object-fit: cover;
+  width: 100%;
 }
 
 @media screen and (max-width:650px){
@@ -226,4 +256,12 @@ footer>div{
     display: flex;
     flex-direction: row;
   }
+  .artistProducts{
+    display: block
+  }
+  /* artistImg{
+    display: block;
+    width: 100%;
+    object-fit: cover;
+  } */
 }

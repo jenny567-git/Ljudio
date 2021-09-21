@@ -12,35 +12,44 @@ function Player() {
     isPlaying: [isPlaying, setPlaying],
   } = useContext(StoreContext);
 
-  const [currentSec, setCurrentSec] = useState('00');
+  const [currentSec, setCurrentSec] = useState("00");
   const [currentMin, setCurrentMin] = useState(0);
-
-  const [timeSlider, setTimeSlider] = useState('00');
-  const [totalSec, setTotalSec] = useState('00');
+  const [totalSec, setTotalSec] = useState("00");
   const [totalMin, setTotalMin] = useState(0);
+  const [timeSlider, setTimeSlider] = useState("00");
 
+  //https://dev.to/ahmedsarhan/create-your-live-watch-and-date-in-react-js-no-3rd-party-hassle-1oa4
   useEffect(() => {
     if (isPlaying) {
       setInterval(() => {
-        const totalInSeconds = Math.floor(window.player.getDuration() % 60);
         const totalsInMinutes = Math.floor(window.player.getDuration() / 60);
+        const totalInSeconds = Math.floor(window.player.getDuration() % 60);
 
-        const totalSecString = (totalInSeconds <10) ? 
-        `0${totalInSeconds}` : String(totalInSeconds);
-        const totalMinString = totalsInMinutes;
+        const totalSecString =
+          totalInSeconds < 10 ? `0${totalInSeconds}` : String(totalInSeconds);
 
-        const currentInSeconds = Math.floor(window.player.getCurrentTime() % 60);
-        const currentInMinutes = Math.floor(window.player.getCurrentTime() / 60);
-        
-        const currentSecondString = (currentInSeconds < 10) ? 
-        `0${currentInSeconds}` : String(currentInSeconds);
-        const currentMinuteString = currentInMinutes;
-        
+        const currentInMinutes = Math.floor(
+          window.player.getCurrentTime() / 60
+        );
+        const currentInSeconds = Math.floor(
+          window.player.getCurrentTime() % 60
+        );
+
+        const currentSecondString =
+          currentInSeconds < 10
+            ? `0${currentInSeconds}`
+            : String(currentInSeconds);
+
+        setTotalMin(totalsInMinutes);
         setTotalSec(totalSecString);
-        setTotalMin(totalMinString);
+        setCurrentMin(currentInMinutes);
         setCurrentSec(currentSecondString);
-        setCurrentMin(currentMinuteString);
         setTimeSlider(window.player.getCurrentTime());
+
+        if(currentInMinutes == totalsInMinutes && currentSecondString==totalSecString){
+            setPlaying(false)
+        }
+        
       }, 1000);
     }
   }, [isPlaying]);

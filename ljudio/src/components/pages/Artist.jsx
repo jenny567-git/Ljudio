@@ -1,13 +1,17 @@
-import React, { useContext, useEffect } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { StoreContext } from "../../utils/store";
+
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function Artist() {
   const {
     isLoading: [isLoading, setLoading],
     artistResult: [artistResult, setArtistResult],
   } = useContext(StoreContext);
-  
+  const [isCopied, setCopy] = useState(false);
+
   //commented out due to occasionally api error
   //   const imgUrl = getArtistResult.thumbnails[0].url;
   
@@ -31,6 +35,13 @@ function Artist() {
     }
   };
 
+  const copyBtn = () => {
+    let link = window.location.href;
+    navigator.clipboard.writeText(link);
+    setCopy(true);
+    toast.success('Link copied', { hideProgressBar: true });
+  };
+
   function renderResult() {
     let comp;
     console.log("artist:", artistResult);
@@ -40,6 +51,11 @@ function Artist() {
           {/* <img src={imgUrl} alt="" className="artistImg"/> */}
           <h3>{artistResult.name}</h3>
           <p>{artistResult.description}</p>
+          <button className="btn btn-toLink" onClick={() => copyBtn()}>
+            {!isCopied ? "Copy" : "Copied!"}
+            {/* Copy */}
+          </button>
+          <ToastContainer autoClose={3000} />
         </div>
       );
     }

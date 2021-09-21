@@ -47,9 +47,9 @@ function Player() {
         setTimeSlider(window.player.getCurrentTime());
 
         if(currentInMinutes == totalsInMinutes && currentSecondString==totalSecString){
-            setPlaying(false)
+            setPlaying(!isPlaying)
         }
-        
+
       }, 1000);
     }
   }, [isPlaying]);

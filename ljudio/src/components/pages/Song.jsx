@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { StoreContext } from "../../utils/store";
 import PlayerControls from "../PlayerControls";
+import Player from "../Player";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
@@ -60,6 +61,9 @@ function Song() {
           <p>
             Artist: {songResult != undefined ? songResult.artist.name : "N/A"}
           </p>
+          <div>
+          {/* {songResult != undefined ? <Player/> : ''}  */}
+          </div>
           Song player
           <div>
             <PlayerControls />

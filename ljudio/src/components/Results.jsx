@@ -3,39 +3,14 @@ import SongResult from "./SongResult";
 import ArtistResult from "./ArtistResult";
 import PlayerControls from "./PlayerControls";
 import { StoreContext } from "../utils/store";
+import Player from "./Player";
 
 function Results() {
   const {
     type: [type],
     results: [results],
     isLoading: [isLoading],
-    currentSongId: [currentSongId, setCurrentSongId],
-    songResult: [songResult, setSongResult],
-    isPlaying: [isPlaying, setPlaying],
   } = useContext(StoreContext);
-
-  let song;
-
-  const findSong = () => {
-    let resArray = Array.from(results.content);
-    song = resArray.find((x) => x.videoId == currentSongId);
-  };
-
-  const getSongName = () => {
-    if (song == undefined) {
-      findSong();
-      if (song == undefined) return "";
-    }
-    return song.name;
-  };
-
-  const getSongArtist = () => {
-    if (song == undefined) {
-      findSong();
-      if (song == undefined) return "";
-    }
-    return song.artist.name;
-  };
 
   function renderResult() {
     let comp;
@@ -56,13 +31,7 @@ function Results() {
                 <SongResult key={result.videoId} result={result} />
               ))}
               <div className="sticky-player">
-                <div>
-                  <p><b>{currentSongId != undefined ? getSongName() : ""}</b></p>
-                  <p><i>{currentSongId != undefined ? getSongArtist() : ""}</i></p>
-                </div>
-                <div className="sticky-playerControls">
-                  <PlayerControls id={currentSongId} />
-                </div>
+                <Player />
               </div>
             </>
           );

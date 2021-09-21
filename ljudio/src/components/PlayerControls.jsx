@@ -1,26 +1,24 @@
 import React, { useState, useEffect, useContext, Component } from "react";
 import { StoreContext } from "../utils/store";
 
-let inPause = false
-let PauseSongId = ''
+let inPause = false;
+let PauseSongId = "";
 
 export const play = (id) => {
   // calling global variable
-  if(inPause && id == PauseSongId){
-    window.player.playVideo()
-    inPause = false
+  if (inPause && id == PauseSongId) {
+    window.player.playVideo();
+    inPause = false;
   } else {
     window.player.loadVideoById(id);
   }
-  // setCurrentSongId(id)
 };
 
 function PlayerControls() {
-  // const [isPlaying, setPlaying] = useState(false);
   const {
     results: [results],
     currentSongId: [currentSongId, setCurrentSongId],
-    isPlaying: [isPlaying, setPlaying]
+    isPlaying: [isPlaying, setPlaying],
   } = useContext(StoreContext);
 
   const togglePlay = () => {
@@ -30,51 +28,48 @@ function PlayerControls() {
 
   //takes care of pause the music upon component unmounts
   useEffect(() => {
-
     return () => {
-      pause()
-    }
-  }, [])
-
+      pause();
+    };
+  }, []);
 
   const pause = () => {
-    // console.log('is playing', isPlaying);
-    // console.log('duration', window.player.getDuration());
-    inPause = true
-    PauseSongId = currentSongId
+    inPause = true;
+    PauseSongId = currentSongId;
     window.player.pauseVideo();
   };
 
-  let resultArray
-  let currentSongIndex
+  let resultArray;
+  let currentSongIndex;
   const findSongIndex = () => {
-    resultArray = Array.from(results.content)
-    console.log('resArray:', resultArray);
-    currentSongIndex = resultArray.findIndex(x => x.videoId == currentSongId)
-    console.log('currentsongindex:', currentSongIndex);
-  }
+    resultArray = Array.from(results.content);
+    console.log("resArray:", resultArray);
+    currentSongIndex = resultArray.findIndex((x) => x.videoId == currentSongId);
+    console.log("currentsongindex:", currentSongIndex);
+  };
 
   const next = () => {
-    if(results.content){
-      findSongIndex()
-      let nextSong = resultArray[currentSongIndex+1];
-      console.log('next song:', nextSong);
-      setCurrentSongId(nextSong.videoId)
+    if (results.content) {
+      findSongIndex();
+      let nextSong = resultArray[currentSongIndex + 1];
+      console.log("next song:", nextSong);
+      setCurrentSongId(nextSong.videoId);
       window.player.loadVideoById(nextSong.videoId);
-      setPlaying(true)
+      setPlaying(true);
     }
-  }
+  };
 
   const previous = () => {
-    if(results.content){
-      findSongIndex()
-      let prevSong = resultArray[currentSongIndex-1];
-      console.log('prev song:', prevSong);
-      setCurrentSongId(prevSong.videoId)
+    if (results.content) {
+      findSongIndex();
+      let prevSong = resultArray[currentSongIndex - 1];
+      console.log("prev song:", prevSong);
+      setCurrentSongId(prevSong.videoId);
       window.player.loadVideoById(prevSong.videoId);
-      setPlaying(true)
+      setPlaying(true);
     }
-  }
+  };
+
   return (
     <>
       <button className="btn" onClick={() => previous()}>

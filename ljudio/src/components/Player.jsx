@@ -18,6 +18,7 @@ function Player() {
   const [totalSec, setTotalSec] = useState("00");
   const [totalMin, setTotalMin] = useState(0);
   const [timeSlider, setTimeSlider] = useState("00");
+  const [duration, setDuration] = useState("100");
   // const [volumeSlider, setVolumeSlider] = useState(20);
 
   //https://dev.to/ahmedsarhan/create-your-live-watch-and-date-in-react-js-no-3rd-party-hassle-1oa4
@@ -47,6 +48,7 @@ function Player() {
         setTotalSec(totalSecString);
         setCurrentMin(currentInMinutes);
         setCurrentSec(currentSecondString);
+        setDuration(window.player.getDuration())
         setTimeSlider(window.player.getCurrentTime());
 
         //causes problem with player play button when new search is done
@@ -106,7 +108,7 @@ function Player() {
         <input
           type="range"
           min="0"
-          max={window.player.getDuration()}
+          max={duration}
           value={timeSlider}
           className="slider"
           id="timeSlider"

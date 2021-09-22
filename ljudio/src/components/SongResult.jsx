@@ -10,14 +10,21 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 function SongResult({ result }) {
-  const url = result.thumbnails[0].url;
-  const [isCopied, setCopy] = useState(false);
+
   const {
     currentSongId: [currentSongId, setCurrentSongId],
     isPlaying: [isPlaying, setPlaying],
   } = useContext(StoreContext);
+  const [isCopied, setCopy] = useState(false);
+  const [image, setImage] = useState('')
   let history = useHistory();
-
+  
+  useEffect(() => {
+    if(result.thumbnails){
+      setImage(result.thumbnails[0].url)
+    }    
+  }, [])
+  
   const toSongLink = () => {
     setPlaying(false);
     history.push("/song/" + result.videoId);
@@ -42,7 +49,7 @@ function SongResult({ result }) {
       <div className="songresult-innerdiv">
 
       <img
-        src={url}
+        src={image}
         alt=""
         style={{
           borderRadius: "10px",

@@ -33,14 +33,14 @@ function Artist() {
       console.log("artist result", result);
       setArtistResult(result);
       setLoading(false);
-      if(result.products.singles) setArtistSongs(result.products.singles.content);
-      if(result.products.albums) setArtistAlbums(result.products.albums.content);
-      if(result.products.singles) console.log("artist songs", result.products.singles.content);
-      if(result.products.albums) console.log("artist albums", result.products.albums.content);
+      if(result.products && result.products.singles) setArtistSongs(result.products.singles.content);
+      if(result.products && result.products.albums) setArtistAlbums(result.products.albums.content);
+      if(result.products && result.products.singles) console.log("artist songs", result.products.singles.content);
+      if(result.products && result.products.albums) console.log("artist albums", result.products.albums.content);
       
       if(result.thumbnails){
-        setImage(result.thumbnails[0].url)
-        console.log(result.thumbnails[0].url);
+        setImage(result.thumbnails[2].url)
+        console.log(result.thumbnails[2].url);
       }
     }
   };

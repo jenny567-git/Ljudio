@@ -1,13 +1,21 @@
-import React, { useContext } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import { useHistory } from "react-router-dom"
 import { StoreContext } from "../utils/store";
 //key: brosweId
 
 function ArtistResult({ result }) {
-  const imgUrl = result.thumbnails[1].url;
+
+  const [image, setImage] = useState('')
   const { artistResult:[artistResult, setArtistResult] } = useContext(StoreContext);
   const {isLoading: [isLoading, setLoading]} = useContext(StoreContext);
+
   let history = useHistory()
+
+  useEffect(() => {
+      if(result.thumbnails){
+          setImage(result.thumbnails[1].url)
+      }    
+  }, [])
 
   const toArtistLink = () => {
       history.push('/artist/' + result.browseId);
@@ -15,8 +23,7 @@ function ArtistResult({ result }) {
 
   return (
     <div className="result-artists">
-      {/* <a href={`/artists/` + result.browseId}>Go to</a> */}
-      <img src={imgUrl} alt="" onClick={toArtistLink} />
+      <img src={image} alt="" onClick={toArtistLink} />
       <br />
       <a href={'/artist/' + result.browseId}>{result.name}</a>
     </div>

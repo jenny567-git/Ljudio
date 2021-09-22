@@ -8,6 +8,7 @@ import "react-toastify/dist/ReactToastify.css";
 
 function Song() {
   const [isCopied, setCopy] = useState(false);
+  const [image, setImage] = useState('')
   const {
     isLoading: [isLoading, setLoading],
     songResult: [songResult, setSongResult],
@@ -20,11 +21,11 @@ function Song() {
   useEffect(() => {
     setCurrentSongId(id);
     fetchSongInfo();
-    if (!results.content) {
-      setLoading(false);
-      console.log("song result", songResult);
-      renderResult();
-    }
+    // if (!results.content) {
+    //   setLoading(false);
+    //   console.log("song result", songResult);
+    //   renderResult();
+    // }
   }, []); //on first render
 
   const fetchSongInfo = async () => {
@@ -37,6 +38,9 @@ function Song() {
       let song = result.content.find((x) => x.videoId == id);
       setSongResult(song);
       console.log("song", song);
+      if(song.thumbnails){
+        setImage(song.thumbnails[1].url)
+    }
       setLoading(false);
     }
   };
@@ -54,7 +58,7 @@ function Song() {
       comp = (
         <div>
           <img
-            src={songResult ? songResult.thumbnails[1].url : ""}
+            src={image}
             alt=""
           />
           <p>Title: {songResult ? songResult.name : "N/A"}</p>

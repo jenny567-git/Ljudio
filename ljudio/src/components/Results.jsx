@@ -10,6 +10,7 @@ function Results() {
     type: [type],
     results: [results],
     isLoading: [isLoading],
+    currentSongId: [currentSongId],
   } = useContext(StoreContext);
 
   function renderResult() {
@@ -30,9 +31,14 @@ function Results() {
               {Array.from(results.content).map((result) => (
                 <SongResult key={result.videoId} result={result} />
               ))}
-              <div className="sticky-player">
-                <Player />
-              </div>
+
+              {currentSongId ? (
+                <div className="sticky-player">
+                  <Player />{" "}
+                </div>
+              ) : (
+                ""
+              )}
             </>
           );
           break;

@@ -36,7 +36,7 @@ header{
 }
 
 img{
-  width: 15vh;
+  /* width: 15vh; */
   border-radius: 10px;
 }
 
@@ -162,6 +162,7 @@ input[type=text]{
 
 .artistresult{
   margin-bottom: 2vw;
+  text-align: center;
 }
 
 .artistresult img{
@@ -269,7 +270,9 @@ footer>div{
     width: 30%;
   }
 
-  
+  img{
+    width: inherit;
+  }
  
  
 

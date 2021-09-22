@@ -17,7 +17,7 @@ function ArtistResult({ result }) {
 
   useEffect(() => {
     if (result.thumbnails) {
-      console.log(result.thumbnails);
+      // console.log(result.thumbnails);
       setImage(result.thumbnails[1].url);
     }
   }, []);

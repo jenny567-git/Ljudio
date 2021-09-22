@@ -60,10 +60,10 @@ function Song() {
             src={image}
             alt=""
           />
-          <p>Title: {songResult ? songResult.name : "N/A"}</p>
+          {/* <p>Title: {songResult ? songResult.name : "N/A"}</p>
           <p>
             Artist: {songResult ? songResult.artist.name : "N/A"}
-          </p>
+          </p> */}
           <div>
           {songResult ? <Player/> : ''} 
           </div>

@@ -32,7 +32,7 @@ function ArtistResult({ result }) {
         src={image}
         alt=""
         onClick={toArtistLink}
-        onError={artistNotFound}
+        onError={(e)=>{e.target.onerror = null; e.target.src={artistNotFound}}}
       />
       <br />
       <a href={"/artist/" + result.browseId}>{result.name}</a>

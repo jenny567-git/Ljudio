@@ -157,11 +157,12 @@ input[type=text]{
   padding: 1vw;
   border-radius: 5px;
   justify-items: center;
-  /* align-items: center; */
+  align-items: center;
+  gap: 1vh;
 }
 
 .artistresult{
-  margin-bottom: 2vw;
+  /* margin-bottom: 2vw; */
   text-align: center;
 }
 
@@ -286,8 +287,11 @@ footer>div{
     justify-content: end;
   }
   /* ------------------------ ARTIST RESULTS */
+  .artistresult{
+    margin: 3vh 0;
+  }
   .artistresult img{
-    width: 100%;
+    width: 90%;
   }
   /* ------------- ARTIST PAGE & COMPONENTS */
   .artist-grid{

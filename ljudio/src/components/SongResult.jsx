@@ -45,9 +45,8 @@ function SongResult({ result }) {
   };
 
   return (
-    <div className="result-div">
+    <div className="songresult">
       <div className="songresult-innerdiv">
-
       <img
         src={image}
         alt=""

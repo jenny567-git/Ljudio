@@ -30,7 +30,7 @@ main {
   flex-grow: 1;
   margin: 2vh 0;
 }
-
+/* -------------------------------TAGS */
 header{
   background: lightgray;
 }
@@ -40,6 +40,12 @@ img{
   border-radius: 10px;
 }
 
+button{
+  padding: 0.5vh;
+  border: none;
+  background: none;
+}
+/* ---------------------------- NAVBAR */
 nav{
   display: flex;
   justify-content: space-around;
@@ -53,6 +59,7 @@ nav>a{
   color: rgb(56, 53, 53);
 }
 
+/* -------------------------------- SEARCH */
 form{
   margin: 2vw 0;
 }
@@ -65,62 +72,11 @@ input[type=text]{
   padding: 0.5vh;
 }
 
-button{
-  padding: 0.5vh;
-  border: none;
-  background: none;
-}
-
+/* -------------------------- GLOBAL */
 
 .container{
   width: 90%;
   margin: auto;
-}
-
-.sticky-player{
-  position: sticky;
-  bottom: 0;
-  background: lightgray;
-  border: 1px outset rgb(180, 180, 180);
-  border-radius: 5px;
-  display: flex;
-  justify-content: space-between;  
-  align-items: center;
-  padding: 1vw 1vw;
-}
-
-.sticky-player p{
-  margin: 0.5vw 0;
-}
-
-.artist-grid{
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
-  background: lightgray;
-  overflow:hidden;
-  padding: 1vw;
-  border-radius: 5px;
-  justify-items: center;
-  /* align-items: center; */
-}
-
-.result-artists{
-  margin-bottom: 2vw;
-}
-
-.result-artists img{
-  cursor: pointer;
-  border-radius: 10px;
-}
-
-
-.result-artists a{
-  text-decoration: none;
-  color: black;
-}
-
-.artistImg{
-  width: 100%
 }
 
 .btn{
@@ -148,12 +104,66 @@ button{
   border: 1px outset lightgray;
 }
 
-.songresult-innerdiv{
+/* ----------------------- PLAYER */
+.sticky-player{
+  position: sticky;
+  bottom: 0;
+  background: lightgray;
+  border: 1px outset rgb(180, 180, 180);
+  border-radius: 5px;
   display: flex;
-  flex-grow: 1;
+  justify-content: space-between;  
+  align-items: center;
+  padding: 1vw 1vw;
 }
 
-.result-div{
+.sticky-player p{
+  margin: 0.5vw 0;
+}
+
+.playerInfo{
+  flex-grow: 1;
+  margin-right: 1vw;
+}
+
+#playerSlider {
+  object-fit: cover;
+  width: 100%;
+}
+
+/* -------------------------- SEARCH RESULTS */
+
+/* .......ARTIST RESULTS */
+.artist-grid{
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  background: lightgray;
+  overflow:hidden;
+  padding: 1vw;
+  border-radius: 5px;
+  justify-items: center;
+  /* align-items: center; */
+}
+
+.artistresult{
+  margin-bottom: 2vw;
+}
+
+.artistresult img{
+  cursor: pointer;
+  border-radius: 10px;
+}
+
+.artistresult a{
+  text-decoration: none;
+  color: black;
+}
+
+.artistImg{
+  width: 100%
+}
+/* ..................SONG RESULTS */
+.songresult{
   background: rgb(134, 207, 200);
   display: flex;
   padding: 1vw 2vw;
@@ -161,8 +171,13 @@ button{
   margin: 1vw 0
 }
 
-.result-div p{
- margin: 0;
+.songresult p{
+  margin: 0;
+}
+
+.songresult-innerdiv{
+  display: flex;
+  flex-grow: 1;
 }
 
 .song-info{
@@ -175,22 +190,19 @@ footer>div{
   padding: 2vh;
 }
 
-#myProgress {
-  width: 100%;
-  background-color: grey;
-}
+/* ----------------- ARTIST  */
 
-.playerInfo{
-  flex-grow: 1;
-  margin-right: 1vw;
-}
-
-
-.product {
-  width: 100%;
+#artist-title{
   display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
+#artist-title button{
+  margin-left: 1vw;
+  height:5vh;
+}
+  
 .artistProducts{
   display: flex;
   flex-wrap: wrap;
@@ -210,25 +222,20 @@ footer>div{
   margin-left: 10px;
 }
 
-#artist-title{
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-#artist-title button{
-  margin-left: 1vw;
-  height:5vh;
-}
-#playerSlider {
-  object-fit: cover;
+.product {
   width: 100%;
+  display: flex;
 }
 
+
+
+/* ---------------------------------------- MEDIA SCREEN */
 @media screen and (max-width:650px){
-  /* nav{
-    flex-direction: column;
-  } */
+  
+  .btn{
+    font-size: 10px;
+  }
+
   nav img{
     width: 20vh;
   }
@@ -236,26 +243,7 @@ footer>div{
   input[type=text]{
     width: 90%;
   }
-
-  .artist-grid{
-    display: block;
-  }
-  .result-div{
-    display: block; 
-  }
-  
-  .songresult-btns{
-    display: flex;
-    justify-content: end;
-  }
-  
-  .result-artists img{
-    width: 100%;
-  }
-  .btn{
-    font-size: 10px;
-  }
-
+  /* ---------------- PLAYER */
   .sticky-player p{
     margin: 2vw;
   }
@@ -263,12 +251,26 @@ footer>div{
     display: flex;
     flex-direction: row;
   }
+  /* ----------------------- SONG RESULTS */
+    .songresult{
+      display: block; 
+  }
+    
+  .songresult-btns{
+    display: flex;
+    justify-content: end;
+  }
+  /* ------------------------ ARTIST RESULTS */
+  .artistresult img{
+    width: 100%;
+  }
+  /* ------------- ARITIST PAGE & COMPONENTS */
+  .artist-grid{
+    display: block;
+  }
+
   .artistProducts{
     display: block
   }
-  /* artistImg{
-    display: block;
-    width: 100%;
-    object-fit: cover;
-  } */
+
 }

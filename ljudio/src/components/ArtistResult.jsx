@@ -22,7 +22,7 @@ function ArtistResult({ result }) {
   };
 
   return (
-    <div className="result-artists">
+    <div className="artistresult">
       <img src={image} alt="" onClick={toArtistLink} />
       <br />
       <a href={'/artist/' + result.browseId}>{result.name}</a>

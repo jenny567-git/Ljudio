@@ -4,13 +4,14 @@ import { StoreContext } from "../utils/store";
 let inPause = false;
 let PauseSongId = "";
 
-export const play = (id) => {
+export const play = (id, volume) => {
   // calling global variable
   if (inPause && id == PauseSongId) {
     window.player.playVideo();
     inPause = false;
   } else {
     window.player.loadVideoById(id);
+    window.player.setVolume(volume)
   }
 };
 
@@ -19,10 +20,11 @@ function PlayerControls() {
     results: [results],
     currentSongId: [currentSongId, setCurrentSongId],
     isPlaying: [isPlaying, setPlaying],
+    volume: [volume, setVolume]
   } = useContext(StoreContext);
 
   const togglePlay = () => {
-    isPlaying ? pause() : play(currentSongId);
+    isPlaying ? pause() : play(currentSongId, volume);
     setPlaying(!isPlaying);
   };
 

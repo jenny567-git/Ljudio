@@ -13,7 +13,6 @@ function Song() {
     isLoading: [isLoading, setLoading],
     songResult: [songResult, setSongResult],
     currentSongId: [currentSongId, setCurrentSongId],
-    results: [results, setResults],
   } = useContext(StoreContext);
 
   let { id } = useParams();
@@ -66,11 +65,7 @@ function Song() {
             Artist: {songResult ? songResult.artist.name : "N/A"}
           </p>
           <div>
-          {/* {songResult ? <Player/> : ''}  */}
-          </div>
-          Song player
-          <div>
-            <PlayerControls />
+          {songResult ? <Player/> : ''} 
           </div>
           <br />
           <button className="btn btn-toLink" onClick={() => copyBtn()}>

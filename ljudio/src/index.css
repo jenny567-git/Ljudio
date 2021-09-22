@@ -111,7 +111,7 @@ input[type=text]{
   background: lightgray;
   border: 1px outset rgb(180, 180, 180);
   border-radius: 5px;
-  display: flex;
+  /* display: flex; */
   justify-content: space-between;  
   align-items: center;
   padding: 1vw 1vw;
@@ -120,15 +120,32 @@ input[type=text]{
 .sticky-player p{
   margin: 0.5vw 0;
 }
-
+.sliders{
+  display: flex;
+}
 .playerInfo{
   flex-grow: 1;
   margin-right: 1vw;
 }
 
-#playerSlider {
+#timeSlider {
   object-fit: cover;
   width: 100%;
+}
+.sticky-playerControls{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: 0 1vh
+}
+.volume{
+  display: flex;
+  margin-left: 3vh;
+}
+
+.playerInfo-upperdiv{
+  display: flex;
+  align-content: center;
 }
 
 /* -------------------------- SEARCH RESULTS */
@@ -248,8 +265,9 @@ footer>div{
     margin: 2vw;
   }
   .sticky-playerControls{
-    display: flex;
-    flex-direction: row;
+    /* display: flex; */
+    display: block;
+    /* flex-direction: row; */
   }
   /* ----------------------- SONG RESULTS */
     .songresult{

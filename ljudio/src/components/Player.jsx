@@ -10,6 +10,7 @@ function Player() {
     currentSongId: [currentSongId, setCurrentSongId],
     songResult: [songResult, setSongResult],
     isPlaying: [isPlaying, setPlaying],
+    volume: [volume, setVolume]
   } = useContext(StoreContext);
 
   const [currentSec, setCurrentSec] = useState("00");
@@ -17,6 +18,7 @@ function Player() {
   const [totalSec, setTotalSec] = useState("00");
   const [totalMin, setTotalMin] = useState(0);
   const [timeSlider, setTimeSlider] = useState("00");
+  // const [volumeSlider, setVolumeSlider] = useState(20);
 
   //https://dev.to/ahmedsarhan/create-your-live-watch-and-date-in-react-js-no-3rd-party-hassle-1oa4
   useEffect(() => {
@@ -61,8 +63,12 @@ function Player() {
   let song;
 
   const findSong = () => {
-    let resArray = Array.from(results.content);
-    song = resArray.find((x) => x.videoId == currentSongId);
+    let resArray
+    if(results.content) {
+      resArray = Array.from(results.content);
+      song = resArray.find((x) => x.videoId == currentSongId);
+    }
+    if(!results.content && songResult) song = songResult
   };
 
   const getSongName = () => {
@@ -81,37 +87,67 @@ function Player() {
     return song.artist.name;
   };
 
-  const updateTimeSlider = (newTime) => {
-    window.player.seekTo(newTime, true);
-    setTimeSlider(newTime);
+  const updateTimeSlider = (time) => {
+    window.player.seekTo(time, true);
+    setTimeSlider(time);
+  };
+
+  const updateVolumeSlider = (volume) => {
+    console.log(volume);
+    window.player.setVolume(volume, true);
+    setVolume(volume);
   };
 
   return (
-    <>
-      <div className="playerInfo">
+    <>{!isLoading ? 
+      <>
+      <div className="sliders">
+        {/* <div className="playerInfo"> */}
         <input
           type="range"
           min="0"
-          max={window.player.getDuration()}
+          max="100"
+          // max={window.player.getDuration()}
           value={timeSlider}
           className="slider"
-          id="playerSlider"
+          id="timeSlider"
           onChange={(e) => updateTimeSlider(e.target.value)}
-        />
-        <p>
-          {currentMin}:{currentSec} / {totalMin}:{totalSec}
-        </p>
-        <p>
-          <b>{currentSongId ? getSongName() : ""}</b>
-        </p>
-        <p>
-          <i>{currentSongId ? getSongArtist() : ""}</i>
-        </p>
+          />
+        <div className="volume">
+          <i className="fas fa-volume-down"></i>
+          <input
+            type="range"
+            min="0"
+            max="100"
+            value={volume}
+            className="slider"
+            id="volumeSlider"
+            onChange={(e) => updateVolumeSlider(e.target.value)}
+            />
+          <i className="fas fa-volume-up"></i>
+        </div>
       </div>
-      <div className="sticky-playerControls">
-        <PlayerControls />
+      <div className="playerInfo-upperdiv">
+        <div className="playerInfo">
+          <p>
+            {currentMin}:{currentSec} / {totalMin}:{totalSec}
+          </p>
+          <p>
+            <b>{currentSongId ? getSongName() : ""}</b>
+          </p>
+          <p>
+            <i>{currentSongId ? getSongArtist() : ""}</i>
+          </p>
+        </div>
+        <div className="sticky-playerControls">
+          <div>
+            <PlayerControls />
+          </div>
+        </div>
       </div>
-    </>
+        </>
+  :''}
+  </>
   );
 }
 

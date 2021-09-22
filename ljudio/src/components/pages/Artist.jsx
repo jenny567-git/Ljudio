@@ -14,6 +14,7 @@ function Artist() {
   const [isCopied, setCopy] = useState(false);
   const [artistSongs, setArtistSongs] = useState();
   const [artistAlbums, setArtistAlbums] = useState();
+  const [image, setImage] = useState('')
 
   let { id } = useParams();
 
@@ -32,10 +33,15 @@ function Artist() {
       console.log("artist result", result);
       setArtistResult(result);
       setLoading(false);
-      setArtistSongs(result.products.singles.content);
-      setArtistAlbums(result.products.albums.content);
-      console.log("artist songs", result.products.singles.content);
-      console.log("artist albums", result.products.albums.content);
+      if(result.products.singles) setArtistSongs(result.products.singles.content);
+      if(result.products.albums) setArtistAlbums(result.products.albums.content);
+      if(result.products.singles) console.log("artist songs", result.products.singles.content);
+      if(result.products.albums) console.log("artist albums", result.products.albums.content);
+      
+      if(result.thumbnails){
+        setImage(result.thumbnails[0].url)
+        console.log(result.thumbnails[0].url);
+      }
     }
   };
 
@@ -48,17 +54,12 @@ function Artist() {
 
   function renderResult() {
     let comp;
-    // console.log("artist:", artistResult);
-    //commented out due to occasionally api error
-    // console.log('url:', artistResult.thumbnails[0].url);
 
     if (!isLoading) {
       comp = (
         <div>
           <img
-            src={
-              artistResult != undefined ? artistResult.thumbnails[0].url : ""
-            }
+            src={image}
             alt=""
             className="artistImg"
           />
@@ -69,23 +70,23 @@ function Artist() {
               {/* Copy */}
             </button>
           </div>
-          <p>{artistResult.description}</p>
+          <p>{artistResult.description ? artistResult.description : 'No description available'}</p>
           <div>
             <h3>Albums</h3>
             <div className="artistProducts">
-              {artistAlbums != undefined
+              {artistAlbums 
                 ? Array.from(artistAlbums).map((result) => (
                     <ArtistProduct key={result.browseId} result={result} />
                   ))
-                : ""}
+                : "No albums found"}
             </div>
             <h3>Singles</h3>
             <div className="artistProducts">
-              {artistSongs != undefined
+              {artistSongs 
                 ? Array.from(artistSongs).map((result) => (
                     <ArtistProduct key={result.browseId} result={result} />
                   ))
-                : ""}
+                : "No Singles found"}
             </div>
           </div>
           <ToastContainer autoClose={3000} />

@@ -1,9 +1,17 @@
-import React from "react";
+import React, {useState, useEffect} from "react";
 
 function ArtistProduct({ result }) {
+  const [image, setImage] = useState('')
+
+  useEffect(() => {
+      if(result.thumbnails){
+          setImage(result.thumbnails[0].url)
+      }    
+  }, [])
+
   return (
     <div className="product">
-    <img src={result.thumbnails[0].url} alt="" />
+    <img src={image} alt="" />
       <p>
         {result.name} - {result.year}
       </p>

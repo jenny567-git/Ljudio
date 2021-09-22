@@ -20,7 +20,7 @@ function Song() {
   useEffect(() => {
     setCurrentSongId(id);
     fetchSongInfo();
-    if (results.content == undefined) {
+    if (!results.content) {
       setLoading(false);
       console.log("song result", songResult);
       renderResult();
@@ -54,15 +54,15 @@ function Song() {
       comp = (
         <div>
           <img
-            src={songResult != undefined ? songResult.thumbnails[1].url : ""}
+            src={songResult ? songResult.thumbnails[1].url : ""}
             alt=""
           />
-          <p>Title: {songResult != undefined ? songResult.name : "N/A"}</p>
+          <p>Title: {songResult ? songResult.name : "N/A"}</p>
           <p>
-            Artist: {songResult != undefined ? songResult.artist.name : "N/A"}
+            Artist: {songResult ? songResult.artist.name : "N/A"}
           </p>
           <div>
-          {/* {songResult != undefined ? <Player/> : ''}  */}
+          {/* {songResult ? <Player/> : ''}  */}
           </div>
           Song player
           <div>

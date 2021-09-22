@@ -66,17 +66,17 @@ function Player() {
   };
 
   const getSongName = () => {
-    if (song == undefined) {
+    if (!song) {
       findSong();
-      if (song == undefined) return "";
+      if (!song) return "";
     }
     return song.name;
   };
 
   const getSongArtist = () => {
-    if (song == undefined) {
+    if (!song) {
       findSong();
-      if (song == undefined) return "";
+      if (!song) return "";
     }
     return song.artist.name;
   };
@@ -102,10 +102,10 @@ function Player() {
           {currentMin}:{currentSec} / {totalMin}:{totalSec}
         </p>
         <p>
-          <b>{currentSongId != undefined ? getSongName() : ""}</b>
+          <b>{currentSongId ? getSongName() : ""}</b>
         </p>
         <p>
-          <i>{currentSongId != undefined ? getSongArtist() : ""}</i>
+          <i>{currentSongId ? getSongArtist() : ""}</i>
         </p>
       </div>
       <div className="sticky-playerControls">

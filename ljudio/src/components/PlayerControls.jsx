@@ -20,7 +20,7 @@ function PlayerControls() {
     results: [results],
     currentSongId: [currentSongId, setCurrentSongId],
     isPlaying: [isPlaying, setPlaying],
-    volume: [volume, setVolume]
+    volume: [volume]
   } = useContext(StoreContext);
 
   const togglePlay = () => {
@@ -44,14 +44,14 @@ function PlayerControls() {
   let resultArray;
   let currentSongIndex;
   const findSongIndex = () => {
-    resultArray = Array.from(results.content);
+    resultArray = Array.from(results);
     console.log("resArray:", resultArray);
     currentSongIndex = resultArray.findIndex((x) => x.videoId == currentSongId);
     console.log("currentsongindex:", currentSongIndex);
   };
 
   const next = () => {
-    if (results.content) {
+    if (results) {
       findSongIndex();
       let nextSong = resultArray[currentSongIndex + 1];
       console.log("next song:", nextSong);
@@ -62,7 +62,7 @@ function PlayerControls() {
   };
 
   const previous = () => {
-    if (results.content) {
+    if (results) {
       findSongIndex();
       let prevSong = resultArray[currentSongIndex - 1];
       console.log("prev song:", prevSong);
@@ -87,7 +87,6 @@ function PlayerControls() {
       <button className="btn" onClick={() => next()}>
         <i className="fas fa-step-forward"></i>
       </button>
-      {/* <p>{isPlaying ? 'Playing now' : ''}</p> */}
     </>
   );
 }

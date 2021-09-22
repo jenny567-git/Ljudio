@@ -1,9 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-
 import logo from '../images/logo2-edit.png'
-import Searchbar from "./Searchbar";
 
 function Navbar() {
   return (
@@ -13,10 +11,7 @@ function Navbar() {
             <img src={logo} alt="" />
           </Link>
           <Link to="/">Home</Link>
-          {/* <Link to="/artists">All artists</Link> */}
-          {/* <Link to="/songs">All songs</Link> */}
           <Link to="/about">About</Link>
-          {/* <Searchbar/> */}
         </nav>
     </div>
   )

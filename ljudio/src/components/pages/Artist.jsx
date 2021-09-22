@@ -32,7 +32,6 @@ function Artist() {
     if (result) {
       console.log("artist result", result);
       setArtistResult(result);
-      setLoading(false);
       if(result.products && result.products.singles) setArtistSongs(result.products.singles.content);
       if(result.products && result.products.albums) setArtistAlbums(result.products.albums.content);
       if(result.products && result.products.singles) console.log("artist songs", result.products.singles.content);
@@ -42,6 +41,7 @@ function Artist() {
         setImage(result.thumbnails[2].url)
         console.log(result.thumbnails[2].url);
       }
+      setLoading(false);
     }
   };
 

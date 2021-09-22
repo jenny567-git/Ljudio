@@ -3,12 +3,11 @@ import { StoreContext } from "../utils/store";
 
 function Searchbar() {
   const [searchString, setSearchString] = useState("");
-  // const [type, setType] = useState("songs");
   const {type: [type, setType],} = useContext(StoreContext);
   const {results: [results, setResults]} = useContext(StoreContext);
   const {isLoading: [isLoading, setLoading]} = useContext(StoreContext);
 
-  const search2 = async (e) => {
+  const search = async (e) => {
     e.preventDefault();
     setLoading(true)
     const radiovalue = document.querySelector(
@@ -25,7 +24,7 @@ function Searchbar() {
         break;
       case "albums":
         var response = await fetch(
-          "https://yt-music-api.herokuapp.com/api/yt/search/" + searchString
+          "https://yt-music-api.herokuapp.com/api/yt/albums/" + searchString
         );
         break;
       default:
@@ -36,8 +35,7 @@ function Searchbar() {
     }
     var result = await response.json();
     if (result) {
-      //save results to store context
-      setResults(result);
+      setResults(result.content);
       setLoading(false)
     }
   };
@@ -49,7 +47,7 @@ function Searchbar() {
         placeholder="Search for artists or tracks"
         onChange={(e) => setSearchString(e.target.value)}
       />
-      <button onClick={search2}>
+      <button onClick={search}>
         <i className="fa fa-search"></i>
       </button>
 

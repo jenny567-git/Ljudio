@@ -8,8 +8,6 @@ function ArtistResult({ result }) {
   const [image, setImage] = useState("");
   const {
     artistResult: [artistResult, setArtistResult],
-  } = useContext(StoreContext);
-  const {
     isLoading: [isLoading, setLoading],
   } = useContext(StoreContext);
 
@@ -17,7 +15,6 @@ function ArtistResult({ result }) {
 
   useEffect(() => {
     if (result.thumbnails) {
-      // console.log(result.thumbnails);
       setImage(result.thumbnails[1].url);
     }
   }, []);

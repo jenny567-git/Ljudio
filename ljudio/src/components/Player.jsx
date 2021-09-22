@@ -95,7 +95,7 @@ function Player() {
   };
 
   return (
-    <>{!isLoading ? 
+    
       <>
       <div className="sliders">
         <input
@@ -136,8 +136,6 @@ function Player() {
         </div>
       </div>
         </>
-  :''}
-  </>
   );
 }
 

@@ -1,10 +1,17 @@
-import React from 'react'
+import React, {useState, useEffect} from 'react'
 
 function AlbumResult({result}) {
-    const imgUrl = result.thumbnails[1].url
+    const [image, setImage] = useState('')
+
+    useEffect(() => {
+        if(result.thumbnails){
+            setImage(result.thumbnails[1].url)
+        }    
+    }, [])
+
     return (
         <div className="result-albums">
-            <img src={imgUrl} alt="" />
+            <img src={image} alt="" />
             <p>{result.name}</p>
         </div>
     )

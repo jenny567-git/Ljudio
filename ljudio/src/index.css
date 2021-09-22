@@ -30,15 +30,22 @@ main {
   flex-grow: 1;
   margin: 2vh 0;
 }
-
+/* -------------------------------TAGS */
 header{
   background: lightgray;
 }
 
 img{
   width: 15vh;
+  border-radius: 10px;
 }
 
+button{
+  padding: 0.5vh;
+  border: none;
+  background: none;
+}
+/* ---------------------------- NAVBAR */
 nav{
   display: flex;
   justify-content: space-around;
@@ -52,28 +59,52 @@ nav>a{
   color: rgb(56, 53, 53);
 }
 
+/* -------------------------------- SEARCH */
 form{
   margin: 2vw 0;
 }
 
 input[type=text]{
-  width: 30vh;
-  /* height: 3vh; */
+  width: 50%;
+  font-size: 16px;
+  border: 1px solid gray;
   border-radius: 5px;
-  border-color: gray;
   padding: 0.5vh;
 }
 
-button{
-  padding: 0.5vh;
-  border-radius: 5px;
-}
+/* -------------------------- GLOBAL */
 
 .container{
   width: 90%;
   margin: auto;
 }
 
+.btn{
+  background-color: #555555;
+  border: none;
+  color: white;
+  padding: 15px 15px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 10px;
+  border-radius: 8px;
+  border: 1px outset #555;
+  font-size: 16px
+}
+
+.btn:active{
+  box-shadow: 0 1px #666;
+  transform: translateY(2px);
+}
+
+.btn-toLink{
+  background: lightgray;
+  color: black;
+  border: 1px outset lightgray;
+}
+
+/* ----------------------- PLAYER */
 .sticky-player{
   position: sticky;
   bottom: 0;
@@ -83,9 +114,26 @@ button{
   display: flex;
   justify-content: space-between;  
   align-items: center;
-  padding: 0 2vw;
+  padding: 1vw 1vw;
 }
 
+.sticky-player p{
+  margin: 0.5vw 0;
+}
+
+.playerInfo{
+  flex-grow: 1;
+  margin-right: 1vw;
+}
+
+#playerSlider {
+  object-fit: cover;
+  width: 100%;
+}
+
+/* -------------------------- SEARCH RESULTS */
+
+/* .......ARTIST RESULTS */
 .artist-grid{
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
@@ -97,39 +145,25 @@ button{
   /* align-items: center; */
 }
 
-.result-artists img{
+.artistresult{
+  margin-bottom: 2vw;
+}
+
+.artistresult img{
   cursor: pointer;
   border-radius: 10px;
 }
 
-.artistImg{
-  width: auto
-}
-
-.btn{
-  background-color: #555555;
-  border: none;
-  color: white;
-  padding: 15px 32px;
-  text-align: center;
+.artistresult a{
   text-decoration: none;
-  display: inline-block;
-  font-size: 10px;
-  border-radius: 8px;
-  border: 1px outset #555;
-}
-
-.btn:active{
-  box-shadow: 0 1px #666;
-  transform: translateY(4px);
-}
-
-.btn-toLink{
-  background: lightgray;
   color: black;
-  border: 1px outset lightgray;
 }
-.result-div{
+
+.artistImg{
+  width: 100%
+}
+/* ..................SONG RESULTS */
+.songresult{
   background: rgb(134, 207, 200);
   display: flex;
   padding: 1vw 2vw;
@@ -137,8 +171,13 @@ button{
   margin: 1vw 0
 }
 
-.result-div p{
- margin: 0;
+.songresult p{
+  margin: 0;
+}
+
+.songresult-innerdiv{
+  display: flex;
+  flex-grow: 1;
 }
 
 .song-info{
@@ -151,19 +190,87 @@ footer>div{
   padding: 2vh;
 }
 
+/* ----------------- ARTIST  */
+
+#artist-title{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+#artist-title button{
+  margin-left: 1vw;
+  height:5vh;
+}
+  
+.artistProducts{
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.artistProducts>div{
+  flex: 50%;
+  /* box-shadow: 0 0 0 1px black; */
+  margin-bottom: 10px;
+}
+
+.artistProducts img{
+  margin-right: 10px;
+}
+
+.artistProducts div:nth-child(even) img{
+  margin-left: 10px;
+}
+
+.product {
+  width: 100%;
+  display: flex;
+}
+
+
+
+/* ---------------------------------------- MEDIA SCREEN */
 @media screen and (max-width:650px){
-  nav{
-    flex-direction: column;
+  
+  .btn{
+    font-size: 10px;
   }
 
+  nav img{
+    width: 20vh;
+  }
+
+  input[type=text]{
+    width: 90%;
+  }
+  /* ---------------- PLAYER */
+  .sticky-player p{
+    margin: 2vw;
+  }
+  .sticky-playerControls{
+    display: flex;
+    flex-direction: row;
+  }
+  /* ----------------------- SONG RESULTS */
+    .songresult{
+      display: block; 
+  }
+    
+  .songresult-btns{
+    display: flex;
+    justify-content: end;
+  }
+  /* ------------------------ ARTIST RESULTS */
+  .artistresult img{
+    width: 100%;
+  }
+  /* ------------- ARITIST PAGE & COMPONENTS */
   .artist-grid{
     display: block;
   }
-  
-  .result-artists img{
-    width: 100%;
+
+  .artistProducts{
+    display: block
   }
-  .btn{
-    padding: 15px 15px;
-  }
+
 }

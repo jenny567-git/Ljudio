@@ -129,19 +129,17 @@ input[type=text]{
 }
 
 #timeSlider {
-  object-fit: cover;
-  width: 100%;
+  /* object-fit: cover; */
+  /* width: 100%; */
+  flex-grow: 1;
+  margin-right: 2vh;
 }
 .sticky-playerControls{
   display: flex;
-  flex-direction: column;
-  justify-content: center;
-  margin: 0 1vh
+  align-items: center;
+  margin: 0 1vh;
 }
-.volume{
-  display: flex;
-  margin-left: 3vh;
-}
+
 
 .playerInfo-upperdiv{
   display: flex;
@@ -227,7 +225,6 @@ footer>div{
 
 .artistProducts>div{
   flex: 50%;
-  /* box-shadow: 0 0 0 1px black; */
   margin-bottom: 10px;
 }
 
@@ -262,13 +259,20 @@ footer>div{
   }
   /* ---------------- PLAYER */
   .sticky-player p{
-    margin: 2vw;
+    margin: 0;
   }
-  .sticky-playerControls{
-    /* display: flex; */
-    display: block;
-    /* flex-direction: row; */
+  .sticky-player{
+    padding: 2vw;
   }
+
+  #volumeSlider{
+    width: 30%;
+  }
+
+  
+ 
+ 
+
   /* ----------------------- SONG RESULTS */
     .songresult{
       display: block; 
@@ -282,7 +286,7 @@ footer>div{
   .artistresult img{
     width: 100%;
   }
-  /* ------------- ARITIST PAGE & COMPONENTS */
+  /* ------------- ARTIST PAGE & COMPONENTS */
   .artist-grid{
     display: block;
   }

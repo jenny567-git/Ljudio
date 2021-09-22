@@ -93,7 +93,7 @@ function Player() {
   };
 
   const updateVolumeSlider = (volume) => {
-    console.log(volume);
+    // console.log(volume);
     window.player.setVolume(volume, true);
     setVolume(volume);
   };
@@ -106,14 +106,13 @@ function Player() {
         <input
           type="range"
           min="0"
-          max="100"
-          // max={window.player.getDuration()}
+          max={window.player.getDuration()}
           value={timeSlider}
           className="slider"
           id="timeSlider"
           onChange={(e) => updateTimeSlider(e.target.value)}
           />
-        <div className="volume">
+        {/* <div className="volume"> */}
           <i className="fas fa-volume-down"></i>
           <input
             type="range"
@@ -125,7 +124,7 @@ function Player() {
             onChange={(e) => updateVolumeSlider(e.target.value)}
             />
           <i className="fas fa-volume-up"></i>
-        </div>
+        {/* </div> */}
       </div>
       <div className="playerInfo-upperdiv">
         <div className="playerInfo">
@@ -140,9 +139,9 @@ function Player() {
           </p>
         </div>
         <div className="sticky-playerControls">
-          <div>
+          {/* <div> */}
             <PlayerControls />
-          </div>
+          {/* </div> */}
         </div>
       </div>
         </>

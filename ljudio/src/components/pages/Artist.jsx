@@ -55,7 +55,7 @@ function Artist() {
   function renderResult() {
     let comp;
 
-    if (!isLoading) {
+    if (!isLoading && artistResult) {
       comp = (
         <div>
           <img

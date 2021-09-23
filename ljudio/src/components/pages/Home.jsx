@@ -1,12 +1,9 @@
-import React, {useState, useContext} from "react";
-import { StoreContext } from "../../utils/store";
+import React from "react";
 
 import Searchbar from "../Searchbar";
 import Results from "../Results";
-import PlayerControls from "../PlayerControls";
 
 function Home() {
-  const { results } = useContext(StoreContext);
  
   return (
     <div className="container">

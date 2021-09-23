@@ -4,12 +4,12 @@ import { StoreContext } from "../utils/store";
 
 function Player() {
   const {
-    type: [type],
     results: [results],
     isLoading: [isLoading],
     currentSongId: [currentSongId, setCurrentSongId],
     songResult: [songResult, setSongResult],
     isPlaying: [isPlaying, setPlaying],
+    volume: [volume, setVolume]
   } = useContext(StoreContext);
 
   const [currentSec, setCurrentSec] = useState("00");
@@ -17,6 +17,10 @@ function Player() {
   const [totalSec, setTotalSec] = useState("00");
   const [totalMin, setTotalMin] = useState(0);
   const [timeSlider, setTimeSlider] = useState("00");
+  const [duration, setDuration] = useState("100");
+  const [songName, setSongName] = useState("");
+  const [artistName, setArtistName] = useState("");
+
 
   //https://dev.to/ahmedsarhan/create-your-live-watch-and-date-in-react-js-no-3rd-party-hassle-1oa4
   useEffect(() => {
@@ -45,6 +49,7 @@ function Player() {
         setTotalSec(totalSecString);
         setCurrentMin(currentInMinutes);
         setCurrentSec(currentSecondString);
+        setDuration(window.player.getDuration())
         setTimeSlider(window.player.getCurrentTime());
 
         //causes problem with player play button when new search is done
@@ -58,60 +63,79 @@ function Player() {
     };
   }, [isPlaying]);
 
-  let song;
-
+  useEffect(() => {
+    findSong()
+  }, [currentSongId])
+  
   const findSong = () => {
-    let resArray = Array.from(results.content);
-    song = resArray.find((x) => x.videoId == currentSongId);
-  };
-
-  const getSongName = () => {
-    if (!song) {
-      findSong();
-      if (!song) return "";
+    let song;
+    if(results) {
+      let resArray = Array.from(results);
+      song = resArray.find((x) => x.videoId == currentSongId);
     }
-    return song.name;
-  };
-
-  const getSongArtist = () => {
-    if (!song) {
-      findSong();
-      if (!song) return "";
+    if(!results && songResult) song = songResult
+    // console.log('results', results);
+    // console.log('find song', song);
+    if(song){
+      setArtistName(song.artist.name)
+      setSongName(song.name)
     }
-    return song.artist.name;
+
   };
 
-  const updateTimeSlider = (newTime) => {
-    window.player.seekTo(newTime, true);
-    setTimeSlider(newTime);
+  const updateTimeSlider = (time) => {
+    window.player.seekTo(time, true);
+    setTimeSlider(time);
+  };
+
+  const updateVolumeSlider = (volume) => {
+    // console.log(volume);
+    window.player.setVolume(volume, true);
+    setVolume(volume);
   };
 
   return (
-    <>
-      <div className="playerInfo">
+    
+      <>
+      <div className="sliders">
         <input
           type="range"
           min="0"
-          max={window.player.getDuration()}
+          max={duration}
           value={timeSlider}
           className="slider"
-          id="playerSlider"
+          id="timeSlider"
           onChange={(e) => updateTimeSlider(e.target.value)}
-        />
-        <p>
-          {currentMin}:{currentSec} / {totalMin}:{totalSec}
-        </p>
-        <p>
-          <b>{currentSongId ? getSongName() : ""}</b>
-        </p>
-        <p>
-          <i>{currentSongId ? getSongArtist() : ""}</i>
-        </p>
+          />
+          <i className="fas fa-volume-down"></i>
+          <input
+            type="range"
+            min="0"
+            max="100"
+            value={volume}
+            className="slider"
+            id="volumeSlider"
+            onChange={(e) => updateVolumeSlider(e.target.value)}
+            />
+          <i className="fas fa-volume-up"></i>
       </div>
-      <div className="sticky-playerControls">
-        <PlayerControls />
+      <div className="playerInfo-upperdiv">
+        <div className="playerInfo">
+          <p>
+            {currentMin}:{currentSec} / {totalMin}:{totalSec}
+          </p>
+          <p>
+            <b>{songName}</b>
+          </p>
+          <p>
+            <i>{artistName}</i>
+          </p>
+        </div>
+        <div className="sticky-playerControls">
+            <PlayerControls />
+        </div>
       </div>
-    </>
+        </>
   );
 }
 

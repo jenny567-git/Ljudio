@@ -1,7 +1,6 @@
 import React, { useContext, useEffect } from "react";
 import SongResult from "./SongResult";
 import ArtistResult from "./ArtistResult";
-import PlayerControls from "./PlayerControls";
 import { StoreContext } from "../utils/store";
 import Player from "./Player";
 
@@ -15,12 +14,10 @@ function Results() {
 
   function renderResult() {
     let comp;
-    // console.log("what is type", type);
-    // console.log("what is results:", results);
-    if (results.content && !isLoading) {
+    if (results && !isLoading) {
       switch (type) {
         case "artists":
-          comp = Array.from(results.content).map((result) => (
+          comp = Array.from(results).map((result) => (
             <ArtistResult key={result.browseId} result={result} />
           ));
           break;
@@ -28,7 +25,7 @@ function Results() {
         default:
           comp = (
             <>
-              {Array.from(results.content).map((result) => (
+              {Array.from(results).map((result) => (
                 <SongResult key={result.videoId} result={result} />
               ))}
 

@@ -14,6 +14,7 @@ function SongResult({ result }) {
   const {
     currentSongId: [currentSongId, setCurrentSongId],
     isPlaying: [isPlaying, setPlaying],
+    volume: [volume, setVolume]
   } = useContext(StoreContext);
   const [isCopied, setCopy] = useState(false);
   const [image, setImage] = useState('')
@@ -34,7 +35,7 @@ function SongResult({ result }) {
     console.log("in send to player", result.videoId);
     setCurrentSongId(result.videoId);
     setPlaying(true);
-    play(result.videoId);
+    play(result.videoId, volume);
   };
 
   const copyBtn = () => {

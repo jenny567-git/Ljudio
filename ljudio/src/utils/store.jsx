@@ -5,13 +5,14 @@ import React, { useState, useContext } from "react";
 export const StoreContext = React.createContext(null);
 
 export function StoreProvider({ children }) {
-  const [results, setResults] = useState([])
+  const [results, setResults] = useState()
   const [currentSongId, setCurrentSongId] = useState()
   const [type, setType] = useState()
   const [isLoading, setLoading] = useState(true)
-  const [artistResult, setArtistResult] = useState([])
+  const [artistResult, setArtistResult] = useState()
   const [songResult, setSongResult] = useState()
   const [isPlaying, setPlaying] = useState(false);
+  const [volume, setVolume] = useState(20);
 
   const store = {
     results: [results, setResults],
@@ -20,7 +21,8 @@ export function StoreProvider({ children }) {
     isLoading: [isLoading, setLoading],
     artistResult: [artistResult, setArtistResult],
     songResult: [songResult, setSongResult],
-    isPlaying: [isPlaying, setPlaying]
+    isPlaying: [isPlaying, setPlaying],
+    volume: [volume, setVolume]
   }
 
   return (

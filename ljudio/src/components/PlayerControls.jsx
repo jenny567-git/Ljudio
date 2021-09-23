@@ -4,13 +4,14 @@ import { StoreContext } from "../utils/store";
 let inPause = false;
 let PauseSongId = "";
 
-export const play = (id) => {
+export const play = (id, volume) => {
   // calling global variable
   if (inPause && id == PauseSongId) {
     window.player.playVideo();
     inPause = false;
   } else {
     window.player.loadVideoById(id);
+    window.player.setVolume(volume)
   }
 };
 
@@ -19,10 +20,11 @@ function PlayerControls() {
     results: [results],
     currentSongId: [currentSongId, setCurrentSongId],
     isPlaying: [isPlaying, setPlaying],
+    volume: [volume]
   } = useContext(StoreContext);
 
   const togglePlay = () => {
-    isPlaying ? pause() : play(currentSongId);
+    isPlaying ? pause() : play(currentSongId, volume);
     setPlaying(!isPlaying);
   };
 
@@ -42,14 +44,14 @@ function PlayerControls() {
   let resultArray;
   let currentSongIndex;
   const findSongIndex = () => {
-    resultArray = Array.from(results.content);
+    resultArray = Array.from(results);
     console.log("resArray:", resultArray);
     currentSongIndex = resultArray.findIndex((x) => x.videoId == currentSongId);
     console.log("currentsongindex:", currentSongIndex);
   };
 
   const next = () => {
-    if (results.content) {
+    if (results) {
       findSongIndex();
       let nextSong = resultArray[currentSongIndex + 1];
       console.log("next song:", nextSong);
@@ -60,7 +62,7 @@ function PlayerControls() {
   };
 
   const previous = () => {
-    if (results.content) {
+    if (results) {
       findSongIndex();
       let prevSong = resultArray[currentSongIndex - 1];
       console.log("prev song:", prevSong);
@@ -85,7 +87,6 @@ function PlayerControls() {
       <button className="btn" onClick={() => next()}>
         <i className="fas fa-step-forward"></i>
       </button>
-      {/* <p>{isPlaying ? 'Playing now' : ''}</p> */}
     </>
   );
 }

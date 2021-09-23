@@ -1,31 +1,38 @@
 import React, { useContext, useState, useEffect } from "react";
-import { useHistory } from "react-router-dom"
+import { useHistory } from "react-router-dom";
 import { StoreContext } from "../utils/store";
-//key: brosweId
+
+import artistNotFound from '../images/artistNotFound.png'
 
 function ArtistResult({ result }) {
+  const [image, setImage] = useState("");
+  const {
+    artistResult: [artistResult, setArtistResult],
+    isLoading: [isLoading, setLoading],
+  } = useContext(StoreContext);
 
-  const [image, setImage] = useState('')
-  const { artistResult:[artistResult, setArtistResult] } = useContext(StoreContext);
-  const {isLoading: [isLoading, setLoading]} = useContext(StoreContext);
-
-  let history = useHistory()
+  let history = useHistory();
 
   useEffect(() => {
-      if(result.thumbnails){
-          setImage(result.thumbnails[1].url)
-      }    
-  }, [])
+    if (result.thumbnails) {
+      setImage(result.thumbnails[1].url);
+    }
+  }, []);
 
   const toArtistLink = () => {
-      history.push('/artist/' + result.browseId);
+    history.push("/artist/" + result.browseId);
   };
 
   return (
     <div className="artistresult">
-      <img src={image} alt="" onClick={toArtistLink} />
+      <img
+        src={image}
+        alt=""
+        onClick={toArtistLink}
+        onError={(e)=>{e.target.onerror = null; e.target.src={artistNotFound}}}
+      />
       <br />
-      <a href={'/artist/' + result.browseId}>{result.name}</a>
+      <a href={"/artist/" + result.browseId}>{result.name}</a>
     </div>
   );
 }

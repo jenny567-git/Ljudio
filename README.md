@@ -6,12 +6,12 @@ This project uses the following technologies:
 - ReactJS
 - a Youtube Player API provided by Nodehill
 
-## Screenshots
-https://drive.google.com/drive/folders/1Db2-mZMM9qr_Ovz7nOoFGq3ppPUbB-9d?usp=sharing
-
 ## Prerequisites
 1. Code Editor/IDE
 2. Node.JS Stable
+
+## Screenshots
+https://drive.google.com/drive/folders/1Db2-mZMM9qr_Ovz7nOoFGq3ppPUbB-9d?usp=sharing
 
 ## Usage:
 1. Clone the repo

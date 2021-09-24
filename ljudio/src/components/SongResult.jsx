@@ -32,7 +32,7 @@ function SongResult({ result }) {
   };
 
   const sendToPlayer = () => {
-    console.log("in send to player", result.videoId);
+    // console.log("in send to player", result.videoId);
     setCurrentSongId(result.videoId);
     setPlaying(true);
     play(result.videoId, volume);

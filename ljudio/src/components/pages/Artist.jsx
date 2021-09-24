@@ -23,23 +23,23 @@ function Artist() {
   }, []); //on mount
 
   const getArtist = async (e) => {
-    console.log("param id", id);
+    // console.log("param id", id);
     setLoading(true);
     var response = await fetch(
       "https://yt-music-api.herokuapp.com/api/yt/artist/" + id
     );
     var result = await response.json();
     if (result) {
-      console.log("artist result", result);
+      // console.log("artist result", result);
       setArtistResult(result);
       if(result.products && result.products.singles) setArtistSongs(result.products.singles.content);
       if(result.products && result.products.albums) setArtistAlbums(result.products.albums.content);
-      if(result.products && result.products.singles) console.log("artist songs", result.products.singles.content);
-      if(result.products && result.products.albums) console.log("artist albums", result.products.albums.content);
+      // if(result.products && result.products.singles) console.log("artist songs", result.products.singles.content);
+      // if(result.products && result.products.albums) console.log("artist albums", result.products.albums.content);
       
       if(result.thumbnails){
         setImage(result.thumbnails[2].url)
-        console.log(result.thumbnails[2].url);
+        // console.log(result.thumbnails[2].url);
       }
       setLoading(false);
     }

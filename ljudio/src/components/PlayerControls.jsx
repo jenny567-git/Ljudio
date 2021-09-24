@@ -45,16 +45,16 @@ function PlayerControls() {
   let currentSongIndex;
   const findSongIndex = () => {
     resultArray = Array.from(results);
-    console.log("resArray:", resultArray);
+    // console.log("resArray:", resultArray);
     currentSongIndex = resultArray.findIndex((x) => x.videoId == currentSongId);
-    console.log("currentsongindex:", currentSongIndex);
+    // console.log("currentsongindex:", currentSongIndex);
   };
 
   const next = () => {
     if (results) {
       findSongIndex();
       let nextSong = resultArray[currentSongIndex + 1];
-      console.log("next song:", nextSong);
+      // console.log("next song:", nextSong);
       setCurrentSongId(nextSong.videoId);
       window.player.loadVideoById(nextSong.videoId);
       setPlaying(true);
@@ -65,7 +65,7 @@ function PlayerControls() {
     if (results) {
       findSongIndex();
       let prevSong = resultArray[currentSongIndex - 1];
-      console.log("prev song:", prevSong);
+      // console.log("prev song:", prevSong);
       setCurrentSongId(prevSong.videoId);
       window.player.loadVideoById(prevSong.videoId);
       setPlaying(true);

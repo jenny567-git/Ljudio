@@ -30,7 +30,6 @@ function Song() {
       let song = result.content.find((x) => x.videoId == id);
       setSongResult(song);
       setCurrentSongId(id);
-      // console.log("song", song);
       if (song.thumbnails) {
         setImage(song.thumbnails[1].url);
       }

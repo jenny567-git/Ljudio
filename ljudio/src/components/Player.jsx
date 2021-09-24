@@ -74,8 +74,6 @@ function Player() {
       song = resArray.find((x) => x.videoId == currentSongId);
     }
     if(!results && songResult) song = songResult
-    // console.log('results', results);
-    // console.log('find song', song);
     if(song){
       setArtistName(song.artist.name)
       setSongName(song.name)
@@ -89,7 +87,6 @@ function Player() {
   };
 
   const updateVolumeSlider = (volume) => {
-    // console.log(volume);
     window.player.setVolume(volume, true);
     setVolume(volume);
   };

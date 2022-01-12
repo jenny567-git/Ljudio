@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 import logo from '../images/logo2-edit.png'
+import LoginButton from "./LoginButton";
 
 function Navbar() {
   return (
@@ -12,6 +13,7 @@ function Navbar() {
           </Link>
           <Link to="/">Home</Link>
           <Link to="/about">About</Link>
+          <LoginButton/>
         </nav>
     </div>
   )

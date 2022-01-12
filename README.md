@@ -10,6 +10,9 @@ This project uses the following technologies:
 1. Code Editor/IDE
 2. Node.JS Stable
 
+## Screenshots
+https://drive.google.com/drive/folders/1Db2-mZMM9qr_Ovz7nOoFGq3ppPUbB-9d?usp=sharing
+
 ## Usage:
 1. Clone the repo
 2. Then run the following code in terminal:
